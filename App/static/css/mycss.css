@@ -16,3 +16,7 @@ input[type=textsearch] {
 input[type=textsearch]:focus {
     width: 100%;
 }
+
+side-nav{
+  width: 100px
+}

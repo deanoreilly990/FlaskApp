@@ -17,7 +17,7 @@ def connect():
 # the Mongo DB Database (underlined in red in the screenshots)
 # Obviously, do not store your password as plaintext in practice
     connection = MongoClient('mongodb://localhost:27017')
-    handle = connection["rentalData"]
+    handle = connection["HistData"]
     return handle
 handle=connect()
 

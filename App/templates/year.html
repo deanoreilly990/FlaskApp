@@ -22,10 +22,6 @@
                 </ol>
             </div>
         </div>
-        <form method="post" action="{{ url_for('search') }}">
-          <label for="search"></label>
-          <input type="textsearch" name='Search' placeholder="Search.." /><br />
-        </form>
   <hr>
   {% with messages = get_flashed_messages() %}
     {% if year %}

@@ -7,11 +7,11 @@
 /* Global Styles */
 
 body {
-    margin-top: 100px;
+    margin-top: 80px;
     background-color: #222;
 }
 
-@media(min-width:768px) {
+@media(min-width:900px) {
     body {
         margin-top: 50px;
     }
@@ -112,13 +112,13 @@ ul.alert-dropdown {
 
 /* Side Navigation */
 
-@media(min-width:768px) {
+@media(min-width:105px) {
     .side-nav {
         position: fixed;
         top: 51px;
-        left: 225px;
-        width: 225px;
-        margin-left: -225px;
+        left: 105px;
+        width: 105px;
+        margin-left: -105px;
         border: none;
         border-radius: 0;
         overflow-y: auto;
@@ -129,7 +129,7 @@ ul.alert-dropdown {
     }
 
     .side-nav>li>a {
-        width: 225px;
+        width: 105px;
     }
 
     .side-nav li a:hover,
@@ -182,12 +182,29 @@ ul.alert-dropdown {
     background-color: #5cb85c;
 }
 
-.panel-green > a {
-    color: #5cb85c;
+.panel-dor > a {
+    color: ##4defc7;
 }
 
-.panel-green > a:hover {
-    color: #3d8b3d;
+.panel-dor > a:hover {
+    color: ##4defc7;
+}
+.panel-dor {
+    border-color: ##4defc7;
+}
+
+.panel-dor > .panel-heading {
+    border-color: ##4defc7;
+    color: #fff;
+    background-color: ##4defc7;
+}
+
+.panel-dor > a {
+    color: ##4defc7;
+}
+
+.panel-dor > a:hover {
+    color: ##4defc7;
 }
 
 .panel-red {
