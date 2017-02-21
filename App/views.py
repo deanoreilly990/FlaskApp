@@ -67,6 +67,7 @@ def search():
         output = str(output)
         output1 = '/static/images/History/'+str(year)+'/image1/Dublin_'+output+'.html?link=false"'
         output2 = '/static/images/History/'+str(year)+'/image2/Dublin_'+output+'.html?link=false"'
+        area = output
     else:
         output = "No such name"
     output = 'Dublin '+output
@@ -96,4 +97,4 @@ def search():
 
 
 
-    return render_template('search.html', search = output1,image=output2,area=output,year=year,user  = user, sumData = sumD,mean = mean, max = highest,min=lowest)
+    return render_template('search.html', search = output1,image=output2,area=area,year=year,user  = user, sumData = sumD,mean = mean, max = highest,min=lowest)
