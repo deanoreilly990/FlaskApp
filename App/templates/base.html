@@ -26,6 +26,18 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script>
+    function show(id, value) {
+        document.getElementById(id).style.display = value ? 'block' : 'none';
+    }
+
+    function change(){
+      show('page-wrapper', true);
+      show('loading-wrap', false);
+    }
+
+    setTimeout(change, 2000);
+    </script>
 
 </head>
 
@@ -192,6 +204,7 @@
           <input type="textsearch" name='Search' placeholder="Search By Area" /><br />
         </form>
       </div>
+
     {% block content %}{% endblock %}
 </div>
     <script src="/static/js/jquery.js"></script>
@@ -200,6 +213,12 @@
     <script src="/static/js/bootstrap.min.js"></script>
 
 
+    <div id="loading-wrap">
+      <div class="triangle1"></div>
+      <div class="triangle2"></div>
+      <div class="triangle3"></div>
+    </div>
 </body>
+
 
 </html>
