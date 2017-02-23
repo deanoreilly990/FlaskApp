@@ -30,6 +30,11 @@ def login():
             return redirect(url_for('index'))
     return render_template('login.html', error=error)
 @app.route('/')
+def landing():
+    global year
+    year = '2016'
+    return render_template('landing.html')
+
 @app.route('/index')
 def index():
     global year
