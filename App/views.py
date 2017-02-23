@@ -61,15 +61,18 @@ def search():
     name=request.form['Search']
     name.strip()
     s = handle.PC.find({'Area':name},{'PC':1,'_id':0})
-    if s:
-        output = s[0]
-        output = output['PC']
-        output = str(output)
-        output1 = '/static/images/History/'+str(year)+'/image1/Dublin_'+output+'.html?link=false"'
-        output2 = '/static/images/History/'+str(year)+'/image2/Dublin_'+output+'.html?link=false"'
-        area = output
-    else:
-        output = "No such name"
+
+    try:
+        if s:
+            output = s[0]
+            output = output['PC']
+            output = str(output)
+            output1 = '/static/images/History/'+str(year)+'/image1/Dublin_'+output+'.html?link=false"'
+            output2 = '/static/images/History/'+str(year)+'/image2/Dublin_'+output+'.html?link=false"'
+            area = output
+    except:
+        error = 'Not found: Ensure in Dublin, Check spelling'
+        return render_template('year.html', error=error)
     output = 'Dublin '+output
     if year == '2010':
         datainfo = handle.Data2010.find({'PostCode':output},{'Sum':1,'_id':0,'Min':1,'Max':1,'New Mean':1})

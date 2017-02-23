@@ -6,6 +6,9 @@
 </style>
 
 <div id="page-wrapper">
+  {% if error %}
+    <span class="label label-danger">Error:{{ error }}</span>
+  {% endif %}
 
     <div class="container-fluid">
 
