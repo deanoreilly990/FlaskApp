@@ -4,6 +4,7 @@ from App import app,handle,mysql
 from .forms import LoginForm
 from flask import jsonify
 import pandas as pd
+import models
 #from forms import ContactForm
 from flask_mail import Message, Mail
 
@@ -11,6 +12,7 @@ mail = Mail()
 global year
 global user
 user = None
+global sessionArea
 
 #Route to handle User login
 @app.route('/login', methods=['POST','GET'])
@@ -53,56 +55,33 @@ def logout():
 def year():
     global year
     global user
+    global sessionArea
     my_var = request.args.get('my_var', None)
     year = my_var
-    return render_template('year.html',
-                           year = my_var,user  = user )
+    area, datainfo,location = models.gathersearch(sessionArea,year)
+    info = datainfo[0]
+    sumD = info['Sum']
+    mean = info['New Mean']
+    highest = info['Max']
+    lowest = info['Min']
+    return render_template('search.html',area=area,year=year,user  = user, sumData = sumD,mean = mean, max = highest,min=lowest,location = location)
+
 
 @app.route('/search', methods=['POST'])
 def search():
     global year
     global user
+    global sessionArea
     datainfo = 'Cant Access Data '
-    name=request.form['Search']
-    name.strip()
-    s = handle.PC.find({'Area':name},{'PC':1,'_id':0})
-
-    try:
-        if s:
-            output = s[0]
-            output = output['PC']
-            output = str(output)
-            output1 = '/static/images/History/'+str(year)+'/image1/Dublin_'+output+'.html?link=false"'
-            output2 = '/static/images/History/'+str(year)+'/image2/Dublin_'+output+'.html?link=false"'
-            area = output
-    except:
-        error = 'Not found: Ensure in Dublin, Check spelling'
-        return render_template('year.html', error=error)
-    output = 'Dublin '+output
-    if year == '2010':
-        datainfo = handle.Data2010.find({'PostCode':output},{'Sum':1,'_id':0,'Min':1,'Max':1,'New Mean':1})
-    elif year == '2011':
-        datainfo = handle.Data2011.find({'PostCode':output},{'Sum':1,'_id':0,'Min':1,'Max':1,'New Mean':1})
-    elif year == '2012':
-        datainfo = handle.Data2012.find({'PostCode':output},{'Sum':1,'_id':0,'Min':1,'Max':1,'New Mean':1})
-    elif year == '2013':
-        datainfo = handle.Data2013.find({'PostCode':output},{'Sum':1,'_id':0,'Min':1,'Max':1,'New Mean':1})
-    elif year == '2014':
-        datainfo = handle.Data2014.find({'PostCode':output},{'Sum':1,'_id':0,'Min':1,'Max':1,'New Mean':1})
-    elif year == '2015':
-        datainfo = handle.Data2015.find({'PostCode':output},{'Sum':1,'_id':0,'Min':1,'Max':1,'New Mean':1})
-    elif year == '2016':
-        datainfo = handle.Data2016.find({'PostCode':output},{'Sum':1,'_id':0,'Min':1,'Max':1,'New Mean':1})
-
+    sessionArea=request.form['Search']
+    sessionArea.strip()
+    area, datainfo,location = models.gathersearch(sessionArea,year)
+    #error = datainfo
+    #return render_template('year.html', error=error)
     info = datainfo[0]
     sumD = info['Sum']
     mean = info['New Mean']
     highest = info['Max']
     lowest = info['Min']
 
-
-
-
-
-
-    return render_template('search.html', search = output1,image=output2,area=area,year=year,user  = user, sumData = sumD,mean = mean, max = highest,min=lowest)
+    return render_template('search.html',area=area,year=year,user  = user, sumData = sumD,mean = mean, max = highest,min=lowest,location = location)
