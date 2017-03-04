@@ -159,18 +159,32 @@ def averagePerRoom(pc,version):
     data['Date Entered'] = pd.to_datetime(data['Date Entered'])
     data = data[data["Date Entered"].isin(pd.date_range(str1, str2))]
     beds = data['Beds'].unique()
+    bed =['1','2','3','4','5','6','7']
     bedC = []
-    for i in beds:
-        sumi = 0
-        bdata = data[data['Beds'] == i]
-        for index, row in bdata.iterrows():
-            sumi = sumi + int(row[4])
-        count = bdata['Price'].count()
-        sumi = sumi / count
+    for i in bed:
+        sumi = []
+        count = 0
+        for index,row in data.iterrows():
+            if i in row[1]:
+                count =count +1
+                sumi.append(int(row[4]))
+        sumi=sum(sumi)
+        try:
+            sumi=sumi/count
+        except:
+            pass
         bedC.append(sumi)
+    Fbed=[]
+    FbedC =[]
+    for i in range(len(bed)):
+        if bedC[i] == 0:
+            pass
+        else:
+            Fbed.append(bed[i])
+            FbedC.append(bedC[i])
     trace = go.Bar(
-        x=beds,
-        y=bedC
+        x=Fbed,
+        y=FbedC
     )
     layout = go.Layout(
         title='Average Price Per Bed Room Number in : ' + calendar.month_name[date],
