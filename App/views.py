@@ -37,11 +37,22 @@ def landing():
     year = '2016'
     return render_template('landing.html')
 
-@app.route('/index')
+"""@app.route('/index',methods=['GET']
+def index():
+    global year
+    global user
+    year = '2017'
+    return render_template('index.html',user=user)"""
+
+@app.route('/index',methods=['POST'])
 def index():
     global year
     global user
     year = '2016'
+    datainfo = 'Cant Access Data '
+    sessionArea=request.form['Search']
+    sessionArea.strip()
+    area, datainfo,location = models.gathersearch(sessionArea,year)
     return render_template('index.html',user=user)
 
 @app.route('/logout')
@@ -66,6 +77,21 @@ def year():
     lowest = info['Min']
     return render_template('search.html',area=area,year=year,user  = user, sumData = sumD,mean = mean, max = highest,min=lowest,location = location)
 
+@app.route('/comparesearch')
+def comparesearch():
+    global year
+    return render_template('comparesearch.html',year=year)
+
+@app.route('/result', methods=['POST'])
+def result():
+    global year
+    compare1 =request.form['field1']
+    compare2 =request.form['field2']
+    value1,value2 = models.getDistanceInfo(compare1,compare2)
+    v1 = models.generateGraphs(compare1,compare2)
+    return render_template('result.html',compare1=compare1,compare2=compare2,value1=value1,value2=value2,v1=v1)
+
+
 
 @app.route('/search', methods=['POST'])
 def search():
@@ -76,12 +102,14 @@ def search():
     sessionArea=request.form['Search']
     sessionArea.strip()
     area, datainfo,location = models.gathersearch(sessionArea,year)
-    #error = datainfo
-    #return render_template('year.html', error=error)
-    info = datainfo[0]
-    sumD = info['Sum']
-    mean = info['New Mean']
-    highest = info['Max']
-    lowest = info['Min']
+    try:
+        info = datainfo[0]
+        sumD = info['Sum']
+        mean = info['New Mean']
+        highest = info['Max']
+        lowest = info['Min']
+    except:
+        error = datainfo[0]
+        return render_template('year.html', error=error)
 
     return render_template('search.html',area=area,year=year,user  = user, sumData = sumD,mean = mean, max = highest,min=lowest,location = location)

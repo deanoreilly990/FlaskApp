@@ -2,9 +2,13 @@ from flask import render_template, flash, redirect, session, url_for, request,se
 from flask_login import login_user, logout_user, current_user, login_required
 from App import app,handle,mysql
 from .forms import LoginForm
+from flask_script import Manager
 from flask import jsonify
 import pandas as pd
 import models
+import googlemaps
+from datetime import datetime
+import CurrentSchool
 #from forms import ContactForm
 from flask_mail import Message, Mail
 
@@ -51,3 +55,47 @@ def gathersearch(name,year):
     elif area in DLR:
         location = 'DLR'
     return area,datainfo,location
+
+def getDistanceInfo(value1,value2):
+    now = datetime.now()
+    gmaps = googlemaps.Client(key='AIzaSyA6Ie_h7a_Qgl0vT1IEFrf3qeHMtGg_5cs')
+    directions_results = gmaps.directions(value1,"Dublin City Centre,Ireland",mode="driving",departure_time=now)
+    keys = directions_results[0].keys()
+    key = directions_results[0][keys[6]][0].keys()
+    time = directions_results[0][keys[6]][0][key[8]][u'text']
+    time = time.encode('ascii','ignore')
+    dist = directions_results[0][keys[6]][0][key[0]][u'text']
+    dist = dist.encode('ascii','ignore')
+    value1 = [time,dist]
+    now = datetime.now()
+    gmaps = googlemaps.Client(key='AIzaSyA6Ie_h7a_Qgl0vT1IEFrf3qeHMtGg_5cs')
+    directions_results = gmaps.directions(value2,"Dublin City Centre,Ireland",mode="driving",departure_time=now)
+    keys = directions_results[0].keys()
+    key = directions_results[0][keys[6]][0].keys()
+    time = directions_results[0][keys[6]][0][key[8]][u'text']
+    time = time.encode('ascii','ignore')
+    dist = directions_results[0][keys[6]][0][key[0]][u'text']
+    dist = dist.encode('ascii','ignore')
+    value2 = [time,dist]
+    return value1,value2
+
+def generateGraphs(value1,value2):
+    #logd = Manager(logdata)
+    v1 = handle.PC.find({'Area':value1},{'PC':1,'_id':0})
+    v2 = handle.PC.find({'Area':value2},{'PC':1,'_id':0})
+    try:
+        if v1:
+            output = v1[0]
+            output = output['PC']
+            output = str(output)
+            v1 = 'dublin '+str(output)
+        if v2:
+            output = v2[0]
+            output = output['PC']
+            output = str(output)
+            v2 ='dublin '+str(output)
+    except:
+        error = 'Not found: Ensure in Dublin, Check spelling'
+        return render_template('comparesearch.html', error=error)
+    v1,v2 = CurrentSchool.logdata(v1,v2)
+    return v1,v2
