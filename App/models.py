@@ -88,12 +88,12 @@ def generateGraphs(value1,value2):
             output = v1[0]
             output = output['PC']
             output = str(output)
-            v1 = 'dublin '+str(output)
+            v1 =output
         if v2:
             output = v2[0]
             output = output['PC']
             output = str(output)
-            v2 ='dublin '+str(output)
+            v2 = output
     except:
         error = 'Not found: Ensure in Dublin, Check spelling'
         return render_template('comparesearch.html', error=error)
