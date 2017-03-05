@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+<style>
+/* --------------------Code for search page  URL :http://codepen.io/jackrugile/pen/ABeIi----------------------------- */
+#expand{background-color:#eee;-webkit-transition: all 500ms linear; border:10px solid black}
+#expand:hover{border:30px solid #800}
+</style>
 
 <body>
 <div id="page-wrapper">
@@ -19,12 +24,13 @@
                 </ol>
             </div>
         </div>
-
+<div id="expand">
       {{compare1}}
       {{value1}}
       {{compare2}}
       {{value2}}
       {{v1}}
+    </div>
       <div class="row">
           <div class="col-lg-6 text-center">
               <div class="panel panel-default">

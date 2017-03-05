@@ -375,6 +375,8 @@ repeat-x;
     border-radius: 15px 15px 15px 0px;
 }
 
+
+
 .form-style-5 input[type="submit"],
 .form-style-5 input[type="button"]
 {
@@ -397,3 +399,7 @@ repeat-x;
 {
     background: #109177;
 }
+
+/* --------------------Code for search page  URL :http://codepen.io/jackrugile/pen/ABeIi----------------------------- */
+#expand{background-color:#eee;-webkit-transition: all 500ms linear; border:10px solid black}
+#expand:hover{border:30px solid #800}
