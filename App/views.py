@@ -87,7 +87,8 @@ def result():
     global year
     compare1 =request.form['field1']
     compare2 =request.form['field2']
-    value1,value2 = models.getDistanceInfo(compare1,compare2)
+    value1= models.getDistanceInfo(compare1)
+    value2 = models.getDistanceInfo(compare2)
     v1 = models.generateGraphs(compare1,compare2)
     return render_template('result.html',compare1=compare1,compare2=compare2,value1=value1,value2=value2,v1=v1)
 

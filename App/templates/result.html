@@ -5,10 +5,11 @@
 #expand{
   background-color:#eee;
   -webkit-transition: all 500ms linear;
-   border:10px solid black;
+   border:5px solid black;
+   text-align: left;
 
  }
-#expand:hover{border:30px solid #800;font-weight: bold;}
+#expand:hover{border:10px solid #67cbf0;font-weight: bold;}
 #names
 {
    text-shadow: 1px 1px 6px #fff;
@@ -16,6 +17,7 @@
    top: 100px;
    z-index:1;
 	 font-family: Lato;
+   visibility: hidden;
 }
 }
 </style>
@@ -32,7 +34,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Overview <small>Statistics Overview</small>
+                    <a href="{{ url_for('comparesearch')}}">Comparasion <small>{{compare1}} {{compare2}}</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li class="active">
@@ -41,40 +43,40 @@
                 </ol>
             </div>
         </div>
-<div id="expand">
-      {{compare1}}
-      {{value1}}
-      {{compare2}}
-      {{value2}}
-      {{v1}}
-    </div>
     <div class="row">
       <div class="col-lg-6 text-center">
         <div id="names">
+          <div id="Name1">
           <h1> {{compare1}} </h1>
+        </div>
         </div>
       </div>
 
         <div class="col-lg-6 text-center">
           <div id="names">
+            <div id="Name2">
             <h1> {{compare2}}</h1>
+          </div>
           </div>
           </div>
       </div>
       <div class="row">
         <div class="col-lg-6 text-center">
             <div id= 'expand'>
-              Travel time to Dublin City Center:
-              <img src="/static/images/car.png" alt="Mountain View" style="width:20px;height:20px;">:{{value1[0]}}
-              <img src="/static/images/walk.png" alt="Mountain View" style="width:20px;height:20px;">:{{value1[0]}}
-              <img src="/static/images/transport.ico" alt="Mountain View" style="width:20px;height:20px;">:{{value1[0]}}
+              <strong>Travel time to Dublin City Center </strong> Distance: {{value1[0]}}
+              <br>
+              <img src="/static/images/car.png" alt="Mountain View" style="width:20px;height:20px;">:{{value1[3]}}<br>
+              <img src="/static/images/walk.png" alt="Mountain View" style="width:20px;height:20px;">:{{value1[2]}}<br>
+              <img src="/static/images/transport.ico" alt="Mountain View" style="width:20px;height:20px;">:{{value1[1]}}<br>
             </div>
           </div>
           <div class="col-lg-6 text-center">
             <div id= 'expand'>
-              <img src="/static/images/car.png" alt="Mountain View" style="width:20px;height:20px;">:{{value2[0]}}
-              <img src="/static/images/walk.png" alt="Mountain View" style="width:20px;height:20px;">:{{value2[0]}}
-              <img src="/static/images/transport.ico" alt="Mountain View" style="width:20px;height:20px;">:{{value2[0]}}
+              <strong>Travel time to Dublin City Center </strong> Distance: {{value2[0]}}
+              <br>
+              <img src="/static/images/car.png" alt="Mountain View" style="width:20px;height:20px;">:{{value2[3]}}<br>
+              <img src="/static/images/walk.png" alt="Mountain View" style="width:20px;height:20px;">:{{value2[2]}}<br>
+              <img src="/static/images/transport.ico" alt="Mountain View" style="width:20px;height:20px;">:{{value2[1]}}<br>
             </div>
               </div>
         </div>
@@ -247,7 +249,21 @@
       $('page-wrapper').scroll(function() {
       $('expand').css('top', $(this).scrollTop());
         });
-  //your code here
+
+        $(function(){
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 75) {
+                    $("#Name1:hidden").css('visibility','visible');
+                    $("#Name1:hidden").fadeIn('slow');
+                    $("#Name2:hidden").css('visibility','visible');
+                    $("#Name2:hidden").fadeIn('slow');
+                }
+                else {
+                    $("#Name1:visible").fadeOut("slow");
+                    $("#Name2:visible").fadeOut("slow");
+                }
+            });
+        });
 
     </script>
 

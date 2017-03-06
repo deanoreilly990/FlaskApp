@@ -56,28 +56,22 @@ def gathersearch(name,year):
         location = 'DLR'
     return area,datainfo,location
 
-def getDistanceInfo(value1,value2):
-    now = datetime.now()
+def getDistanceInfo(area):
     gmaps = googlemaps.Client(key='AIzaSyA6Ie_h7a_Qgl0vT1IEFrf3qeHMtGg_5cs')
-    directions_results = gmaps.directions(value1,"Dublin City Centre,Ireland",mode="driving",departure_time=now)
+    now = datetime.now()
+    directions_results = gmaps.directions(area,"o'connell street,dublin",mode="transit",departure_time=now)
+    walking =gmaps.directions(area,"o'connell street,dublin",mode="walking",departure_time=now)
+    driving = gmaps.directions(area, "o'connell street,dublin", mode="driving", departure_time=now)
     keys = directions_results[0].keys()
     key = directions_results[0][keys[6]][0].keys()
-    time = directions_results[0][keys[6]][0][key[8]][u'text']
-    time = time.encode('ascii','ignore')
-    dist = directions_results[0][keys[6]][0][key[0]][u'text']
-    dist = dist.encode('ascii','ignore')
-    value1 = [time,dist]
-    now = datetime.now()
-    gmaps = googlemaps.Client(key='AIzaSyA6Ie_h7a_Qgl0vT1IEFrf3qeHMtGg_5cs')
-    directions_results = gmaps.directions(value2,"Dublin City Centre,Ireland",mode="driving",departure_time=now)
-    keys = directions_results[0].keys()
-    key = directions_results[0][keys[6]][0].keys()
-    time = directions_results[0][keys[6]][0][key[8]][u'text']
-    time = time.encode('ascii','ignore')
-    dist = directions_results[0][keys[6]][0][key[0]][u'text']
-    dist = dist.encode('ascii','ignore')
-    value2 = [time,dist]
-    return value1,value2
+    walkingtime = walking[0][keys[6]][0][key[7]][u'text']
+    walkingtime = walkingtime.encode('ascii','ignore')
+    distance = walking[0][keys[6]][0][key[0]][u'text']
+    distance = distance.encode('ascii','ignore')
+    transtime = directions_results[0][keys[6]][0][key[7]][u'text']
+    transtime = transtime.encode('ascii','ignore')
+    drivingtime = driving[0][keys[6]][0][key[7]][u'text']
+    return distance,transtime,walkingtime,drivingtime
 
 def generateGraphs(value1,value2):
     #logd = Manager(logdata)
