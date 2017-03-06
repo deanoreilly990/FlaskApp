@@ -128,9 +128,9 @@
         </div>
       </div>
           <div class="form-style-5">
-            <form method="post" action="{{ url_for('result') }}">
+            <form id = "myForm" method="post" action="{{ url_for('result') }}">
               <fieldset>
-                <legend><span class="number">1</span> Candidate Info</legend>
+                <legend><span class="number">1</span> Compare Two Areas</legend>
                 <input type="text" name="field1" placeholder="Loction 1 ">
                 <input type="text" name="field2" placeholder="Location 2 ">
                 <!--<label for="job">Interests:</label>
@@ -146,19 +146,23 @@
               </optgroup>
             </select> -->
           </fieldset>
-          <input type="submit" name='Search' onclick=changeAgain()/>
+          <input type="button" name='Search' onclick=changeAgain() value = 'Submit'/>
         </form>
       </div>
     </div>
 <script>
   show('search',false)
   function show(id, value) {
+
       document.getElementById(id).style.display = value ? 'block' : 'none';
+
   }
 
-  function changeAgin(){
-    show('page-wrapper', flase);
+  function changeAgain(){
+    show('page-wrapper', false);
     show('loading-wrap', true);
+    document.getElementById("myForm").submit();
+
   }
 
   setTimeout(change,1500);
