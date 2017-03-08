@@ -1,5 +1,53 @@
 {% extends "base.html" %}
 {% block content %}
+<head>
+  <style>
+  /* ----Code obained from http://jsfiddle.net/UNs9J/1/ --- */
+  span{
+    background:#F8F8F8;
+    border: 5px solid #DFDFDF;
+    color: #717171;
+    font-size: 13px;
+    height: 30px;
+    letter-spacing: 1px;
+    line-height: 30px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    top: -80px;
+    left:-30px;
+    display:none;
+    padding:0 20px;
+
+}
+span:after{
+    content:'';
+    position:absolute;
+    bottom:-10px;
+    width:10px;
+    height:10px;
+    border-bottom:5px solid #dfdfdf;
+    border-right:5px solid #dfdfdf;
+    background:#f8f8f8;
+    left:50%;
+    margin-left:-10px;
+    -moz-transform:rotate(45deg);
+    -webkit-transform:rotate(45deg);
+    transform:rotate(45deg);
+}
+#trans{
+    display:visable;
+}
+
+#trans:hover span{
+    display:block;
+}
+
+#trans:hover span{
+    display:block;
+}
+/* --- End of code obtained */
+  </style>
 <body>
 <div id="page-wrapper">
 
@@ -7,6 +55,7 @@
 
         <!-- Page Heading -->
         <div class="row">
+
             <div class="col-lg-12">
                 <h1 class="page-header">
                   Dublin {{area}} <small>Analysis</small>
@@ -84,7 +133,10 @@
       <div class="col-lg-6 text-center">
           <div class="panel panel-default">
               <div class="panel-body">
-                <iframe align=left width="100%" height="500" frameborder="0" scrolling="no" src='/static/images/History/{{year}}/image1/Dublin_{{area}}.html?link=false"'></iframe>
+                <div id ="trans">
+                  <span>Place information regarding Pre Clamp and Post Clamp information here </span>
+                  <iframe align=left width="100%" height="500" frameborder="0" scrolling="no" src='/static/images/History/{{year}}/image1/Dublin_{{area}}.html?link=false"'></iframe>
+                  </div>
 
               </div>
           </div>
@@ -97,6 +149,7 @@
             </div>
         </div>
   </div>
+</div>
   <div class="row">
       <div class="col-lg-4 text-center">
           <div class="panel panel-default">
@@ -141,5 +194,6 @@
   </div>
 
 </body>
+
   {% endblock %}
 </html>
