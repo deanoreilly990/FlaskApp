@@ -52,6 +52,8 @@ def logdata(value1, value2):
     averagePerRoom(value2,'v2')
     rentalCharts(value1,'v1')
     rentalCharts(value2,'v2')
+    saleovertime(value1,'v1')
+    saleovertime(value2,'v2')
     value1 = 'dublin '+str(value1)
     value2 = 'dublin '+str(value2)
     v1.append(getdata(value1))
@@ -382,3 +384,70 @@ def rentalCharts(pc,v1):
                               'margin':{'l':10,'r':20,'b':50,'t':50,'pad':4}}
                      }
     plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/2017/V9-'+v1+'.html',show_link=False,auto_open=False)
+
+def saleovertime(postcode,v1):
+    import pandas as pd
+    import plotly.plotly as py
+    import plotly.graph_objs as go
+    import plotly
+    import datetime
+    py.sign_in('deanoreilly990', 'WgnPSOLqPlZ5uXFu6WKx')
+    db = get_daft()
+    data = db.Average.find({},{'_id':0})
+    data = pd.DataFrame(list(data))
+    month = datetime.datetime.now()
+    month = month.strftime("%b")
+    bed2av =[]
+    bed3av =[]
+    bed4av =[]
+    data = data[data['Postcode']==str(postcode)]
+    Months = ['Feb','March','April','May','June','July','August','Sept','Nov','Dec','Jan']
+    columns = data.columns
+    count=[]
+    for i in columns:
+        if i =='Postcode':
+            pass
+        else:
+            count.append(i)
+    for i in count:
+        bed2av.append(data[i].values[0][0])
+        bed3av.append(data[i].values[0][1])
+        bed4av.append(data[i].values[0][2])
+
+    trace0 = go.Scatter(
+        x = Months,
+        y = bed2av,
+        mode = 'lines',
+        name = '2 Bed Average'
+    )
+    trace1 = go.Scatter(
+        x = Months,
+        y = bed3av,
+        mode = 'lines+markers',
+        name = '3 Bed Average'
+    )
+    trace2 = go.Scatter(
+        x = Months,
+        y = bed4av,
+        mode = 'markers',
+        name = '4 Bed Average '
+    )
+    layout = go.Layout(
+        title ='Average House Sale Price, Per Room Count',
+        yaxis=dict(
+            title='Average Price'),
+        xaxis=dict(
+            title= 'Months'),
+        autosize=False,
+            width=500,
+            height=400,
+            margin=go.Margin(
+                l=80,
+                r=10,
+                b=90,
+                t=50,
+                pad=10)
+    )
+    data = [trace0,trace1,trace2]
+    fig = go.Figure(data=data, layout=layout)
+    plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/2017/V10-'+v1+'.html',show_link=False,auto_open=False)
