@@ -144,6 +144,7 @@ def bedroomsLastMonth(value1,v1):
 
     plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/2017/V3-'+v1+'.html',show_link=False,auto_open=False)
 def averagePerRoom(pc,version):
+
     import pandas as pd
     from pymongo import MongoClient
     import plotly.plotly as py
@@ -152,7 +153,6 @@ def averagePerRoom(pc,version):
     import datetime
     import calendar
     py.sign_in('deanoreilly990', 'WgnPSOLqPlZ5uXFu6WKx')
-
     db = get_daft()
     data = db.sale.find({}, {'_id': 0})
     data = pd.DataFrame(list(data))
@@ -213,10 +213,8 @@ def averagePerRoom(pc,version):
     plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/2017/V4-' + version + '.html', show_link=False,auto_open=False)
 
 
-
-
-
 def rentalCharts(pc,v1):
+    """ This function, is concenered with the gathering, perparation, analysisng and the visual representation of the daft rental data"""
     import pandas as pd
     from pymongo import MongoClient
     import plotly.plotly as py
@@ -388,6 +386,9 @@ def rentalCharts(pc,v1):
     plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/2017/V9-'+v1+'.html',show_link=False,auto_open=False)
 
 def saleovertime(postcode,v1):
+    """ This function is used in the gathering of the averaging sale information in each area given. The function is also responsiable for producing the
+    Data visualisation aids needed
+    """
     import pandas as pd
     import plotly.plotly as py
     import plotly.graph_objs as go
@@ -454,6 +455,9 @@ def saleovertime(postcode,v1):
     fig = go.Figure(data=data, layout=layout)
     plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/2017/V10-'+v1+'.html',show_link=False,auto_open=False)
 def rentovertime(postcode,v1):
+    """ This function is used in the gathering of the averaging rental information in each area given. The function is also responsiable for producing the
+    Data visualisation aids needed
+    """
     import pandas as pd
     import plotly.plotly as py
     import plotly.graph_objs as go

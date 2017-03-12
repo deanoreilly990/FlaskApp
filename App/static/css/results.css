@@ -774,3 +774,40 @@ body {margin:0}
 #driving{
   visibility: visible;
 }
+.outsideicon{
+  float:left;
+  margin-left:-25px;
+  margin-top: 0px;
+  width:74px;
+  height: 100%;
+  padding-top: 0px;
+  background-color: #555;
+  position: relative;
+
+}
+.outsideicon{
+  float:left;
+  margin-left:-25px;
+  margin-top: 0px;
+  width:74px;
+  height: 100%;
+  padding-top: 0px;
+  background-color: #555;
+  position: relative;
+
+}
+.outsideicon .icon-bar{
+  height: 100%;
+  padding-top: 10%;
+  margin-left:0px;
+  position: fixed;
+  font-size: 20px;
+
+}
+.insidebody{
+  float:left;
+  width:auto;
+  height: auto;
+  margin-left: 50px;
+
+}
