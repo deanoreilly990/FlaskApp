@@ -13,7 +13,8 @@ import CurrentSchool
 from flask_mail import Message, Mail
 
 def gathersearch(name,year):
-    sessionArea = handle.PC.find({'Area':name},{'PC':1,'_id':0})
+    import re
+    sessionArea = handle.PC.find({'Area': re.compile(name, re.IGNORECASE)},{'PC':1,'_id':0})
     try:
         if sessionArea:
             output = sessionArea[0]
@@ -75,8 +76,9 @@ def getDistanceInfo(area):
 
 def generateGraphs(value1,value2):
     #logd = Manager(logdata)
-    v1 = handle.PC.find({'Area':value1},{'PC':1,'_id':0})
-    v2 = handle.PC.find({'Area':value2},{'PC':1,'_id':0})
+    import re
+    v1 = handle.PC.find({'Area': re.compile(value1, re.IGNORECASE)},{'PC':1,'_id':0})
+    v2 = handle.PC.find({'Area': re.compile(value2, re.IGNORECASE)},{'PC':1,'_id':0})
     try:
         if v1:
             output = v1[0]
