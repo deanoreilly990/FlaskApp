@@ -77,7 +77,7 @@ def year():
     lowest = info['Min']
     return render_template('search.html',area=area,year=year,user  = user, sumData = sumD,mean = mean, max = highest,min=lowest,location = location)
 
-@app.route('/comparesearch')
+@app.route('/comparesearch', methods=['POST','GET'])
 def comparesearch():
     global year
     return render_template('comparesearch.html',year=year)
@@ -114,3 +114,6 @@ def search():
         return render_template('year.html', error=error)
 
     return render_template('search.html',area=area,year=year,user  = user, sumData = sumD,mean = mean, max = highest,min=lowest,location = location)
+@app.route('/story')
+def story():
+    return render_template('timeline.html')

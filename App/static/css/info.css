@@ -1,0 +1,288 @@
+/* Code obtained from http://codepen.io/rossmcneil/pen/rcxGb */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, sans-serif;
+}
+body {
+  background: url('/static/images/Backgroung.jpg') no-repeat center center fixed; /* Image obtained from http://fungyung.com/dublin-wallpapers.html */
+
+-webkit-background-size: cover;
+
+-moz-background-size: cover;
+
+-o-background-size: cover;
+
+background-size: cover;
+height:100%;
+}
+section#timeline {
+  width: 80%;
+  margin: 20px auto;
+  position: relative;
+}
+section#timeline:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin: 0 0 0 -1px;
+  width: 2px;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+}
+section#timeline article {
+  width: 100%;
+  margin: 0 0 20px 0;
+  position: relative;
+}
+section#timeline article:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+section#timeline article div.inner {
+  width: 40%;
+  float: left;
+  margin: 5px 0 0 0;
+  border-radius: 6px;
+}
+section#timeline article div.inner span.date {
+  display: block;
+  width: 60px;
+  height: 50px;
+  padding: 5px 0;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin: 0 0 0 -32px;
+  border-radius: 100%;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: #25303B;
+
+  border: 2px solid rgba(255,255,255,0.2);
+  box-shadow: 0 0 0 7px #25303B;
+}
+section#timeline article div.inner span.date span {
+  display: block;
+  text-align: center;
+}
+section#timeline article div.inner span.date span.day {
+  font-size: 10px;
+}
+section#timeline article div.inner span.date span.month {
+  font-size: 18px;
+}
+section#timeline article div.inner span.date span.year {
+  font-size: 10px;
+}
+section#timeline article div.inner h2 {
+  padding: 15px;
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  border-radius: 6px 6px 0 0;
+  position: relative;
+}
+section#timeline article div.inner h2:after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: -5px;
+  	width: 10px;
+	  height: 10px;
+  -webkit-transform: rotate(-45deg);
+}
+section#timeline article div.inner p {
+  padding: 15px;
+  margin: 0;
+  font-size: 14px;
+  background: #fff;
+  border-radius: 0 0 6px 6px;
+}
+section#timeline article:nth-child(2n+2) div.inner {
+  float: right;
+}
+section#timeline article:nth-child(2n+2) div.inner h2:after {
+  left: -5px;
+}
+section#timeline article:nth-child(1) div.inner h2 {
+  background:#67cbf0;
+}
+section#timeline article:nth-child(1) div.inner h2:after {
+  background: #67cbf0;
+}
+section#timeline article:nth-child(2) div.inner h2 {
+  background:#67cbf0;
+}
+section#timeline article:nth-child(2) div.inner h2:after {
+  background: #67cbf0;
+}
+section#timeline article:nth-child(3) div.inner h2 {
+  background: #67cbf0;
+}
+section#timeline article:nth-child(3) div.inner h2:after {
+  background:#67cbf0;
+}
+section#timeline article:nth-child(4) div.inner h2 {
+  background:#67cbf0;
+}
+section#timeline article:nth-child(4) div.inner h2:after {
+  background: #67cbf0;;
+}
+section#timeline article:nth-child(5) div.inner h2 {
+  background: #67cbf0;
+}
+section#timeline article:nth-child(5) div.inner h2:after {
+  background: #67cbf0;
+}
+section#timeline article:nth-child(6) div.inner h2 {
+  background: #67cbf0;
+}
+section#timeline article:nth-child(6) div.inner h2:after {
+  background:#67cbf0;
+}
+section#timeline article:nth-child(7) div.inner h2 {
+  background: #67cbf0;
+}
+section#timeline article:nth-child(7) div.inner h2:after {
+  background:#67cbf0;
+}
+section#timeline article:nth-child(8) div.inner h2 {
+  background: #67cbf0;
+}
+section#timeline article:nth-child(8) div.inner h2:after {
+  background:#67cbf0;
+}
+/* End of Code Obtained */
+#st1{
+  visibility: hidden;
+}
+.first{
+  visibility: visible;
+  color: rgba(255,255,255,0.5);
+}
+.first:hover{
+  color: #67cbf0;
+}
+.first:hover + #st1{
+  visibility: visible;
+}
+#st2{
+  visibility: hidden;
+}
+.second{
+  visibility: visible;
+    color: rgba(255,255,255,0.5);
+}
+.second:hover{
+  color: #67cbf0;
+}
+.second:hover + #st2{
+  visibility: visible;
+}
+#st3{
+  visibility: hidden;
+}
+.third{
+  visibility: visible;
+  color: rgba(255,255,255,0.5);
+}
+.third:hover{
+  color: #67cbf0;
+}
+.third:hover + #st3{
+  visibility: visible;
+}
+#st4{
+  visibility: hidden;
+}
+.fourth{
+  visibility: visible;
+  color: rgba(255,255,255,0.5);
+}
+.fourth:hover{
+  color: #67cbf0;
+}
+.fourth:hover + #st4{
+  visibility: visible;
+}
+#st5{
+  visibility: hidden;
+}
+.fifth{
+  visibility: visible;
+  color: rgba(255,255,255,0.5);
+}
+.fifth:hover{
+  color: #67cbf0;
+}
+.fifth:hover + #st5{
+  visibility: visible;
+}
+#th6{
+  visibility: hidden;
+}
+.sixth{
+  visibility: visible;
+  color: rgba(255,255,255,0.5);
+}
+.sixth:hover{
+  color: #67cbf0;
+}
+.sixth:hover + #th6{
+  visibility: visible;
+}
+.homeicon{
+  position: fixed;
+  font-size: 50px;
+  color:grey;
+  padding-left: 6px;
+  padding-top: 3px;
+
+}
+#mynew{
+  position: fixed;
+  font-size: 50px;
+  color:grey;
+  padding-left: 6px;
+  padding-top: 3px;
+  z-index:1;
+}
+#rcorners2 {
+    position: fixed;
+    z-index:1;
+    border-radius: 25px;
+    border: 2px solid grey;
+    padding: 10px;
+    width: 60px;
+    height: 60px;
+    animation: bounce 1s infinite alternate;
+    -webkit-animation: bounce 1s infinite alternate;
+    }
+/* Code onbtained from : http://stackoverflow.com/questions/32306089/css-smooth-bounce-animation */
+@keyframes bounce {
+from {
+  transform: translateY(0px);
+}
+to {
+  transform: translateY(-15px);
+}
+}
+@-webkit-keyframes bounce {
+from {
+  transform: translateY(0px);
+}
+to {
+  transform: translateY(-15px);
+}
+}
+#form_hidden{
+  visibility: hidden;
+}
