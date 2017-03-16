@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+  <link href="/static/css/table.css" rel="stylesheet">
+</head>
+<body>
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Overview <small>Statistics Overview</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-dashboard"></i> Dashboard
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+
+        <!-- Page Heading -->
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                      <iframe width="80%" height="500" frameborder="0" scrolling="no" src="/static/images/History/index/index1.html?link=false"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 text-center">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                    <table>
+                      <tr>
+                        <th>Crimes</th>
+                        <th><i class="fa fa-arrow-up" style="font-size:24px;color:red"></i> <i class="fa fa-arrow-down" style="font-size:24px;color:green"></i></th>
+                      </tr>
+                      <tr>
+                        <td>Murder / Attempted Murder </td>
+                        {%if crimes[0] == 'Down'%}
+                            <td><i class="fa fa-arrow-down" style="font-size:24px;color:green"></i></td>
+                        {%else%}
+                            <td><i class="fa fa-arrow-up" style="font-size:24px;color:red"></td>
+                      </tr>
+                      {%endif%}
+                      <tr>
+                        <td>Kidnapping and related offences</td>
+                        {%if crimes[1] == 'Down'%}
+                            <td><i class="fa fa-arrow-down" style="font-size:24px;color:green"></i></td>
+                        {%else%}
+                            <td><i class="fa fa-arrow-up" style="font-size:24px;color:red"></td>
+                      </tr>
+                      {%endif%}
+                      <tr>
+                        <td>Burglary and related offences</td>
+                        {%if crimes[2] == 'Down'%}
+                            <td><i class="fa fa-arrow-down" style="font-size:24px;color:green"></i></td>
+                        {%else%}
+                            <td><i class="fa fa-arrow-up" style="font-size:24px;color:red"></td>
+                      </tr>
+                      {%endif%}
+                      <tr>
+                        <td>Controlled drug offences</td>
+                        {%if crimes[3] == 'Down'%}
+                            <td><i class="fa fa-arrow-down" style="font-size:24px;color:green"></i></td>
+                        {%else%}
+                            <td><i class="fa fa-arrow-up" style="font-size:24px;color:red"></td>
+                      </tr>
+                      {%endif%}
+                      <tr>
+                        <td>Damage to property and to the environment</td>
+                        {%if crimes[4] == 'Down'%}
+                            <td><i class="fa fa-arrow-down" style="font-size:24px;color:green"></i></td>
+                        {%else%}
+                            <td><i class="fa fa-arrow-up" style="font-size:24px;color:red"></td>
+                      </tr>
+                      {%endif%}
+                    </table>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 text-center">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                    <iframe width="80%" height="500" frameborder="0" scrolling="no" src="/static/images/History/index/index3.html?link=false"></iframe>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                  {%for x in crimes%}
+                    {{x}}
+                  {%endfor%}
+                </div>
+              </div>
+            </div>
+        </div>
+
+  </body>
+  {% endblock %}

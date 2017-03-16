@@ -37,30 +37,16 @@ def landing():
     year = '2016'
     return render_template('landing.html')
 
-"""@app.route('/index',methods=['GET']
-def index():
-    global year
-    global user
-    year = '2017'
-    return render_template('index.html',user=user)"""
 
 @app.route('/index',methods=['POST'])
 def index():
     global year
     global user
-    year = '2016'
-    datainfo = 'Cant Access Data '
+    global sessionArea
     sessionArea=request.form['Search']
     sessionArea.strip()
-    area, datainfo,location = models.gathersearch(sessionArea,year)
-    return render_template('index.html',user=user)
-
-@app.route('/logout')
-def logout():
-    global user
-    user = None
-    return redirect(url_for('index'))
-
+    crimes = models.overview(sessionArea)
+    return render_template('index1.html',crimes=crimes)
 
 @app.route('/year')
 def year():
@@ -117,3 +103,11 @@ def search():
 @app.route('/story')
 def story():
     return render_template('timeline.html')
+
+
+from flask import request
+from flask import jsonify
+
+@app.route("/get_my_ip", methods=["GET"])
+def get_my_ip():
+    return jsonify({'ip': request.remote_addr}), 200

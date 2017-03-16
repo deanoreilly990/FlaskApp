@@ -9,6 +9,7 @@ import models
 import googlemaps
 from datetime import datetime
 import CurrentSchool
+import index
 #from forms import ContactForm
 from flask_mail import Message, Mail
 
@@ -95,3 +96,18 @@ def generateGraphs(value1,value2):
         return render_template('comparesearch.html', error=error)
     v1,v2 = CurrentSchool.logdata(v1,v2)
     return v1,v2
+
+def overview(value1):
+    import re
+    v1 = handle.PC.find({'Area': re.compile(value1, re.IGNORECASE)},{'PC':1,'_id':0})
+    try:
+        if v1:
+            output = v1[0]
+            output = output['PC']
+            output = str(output)
+            v1 =output
+    except:
+        error = 'Not found: Ensure in Dublin, Check spelling'
+        return render_template('comparesearch.html', error=error)
+    crimes = index.index(v1)
+    return crimes
