@@ -78,7 +78,10 @@ def result():
     v1 = models.generateGraphs(compare1,compare2)
     return render_template('result.html',compare1=compare1,compare2=compare2,value1=value1,value2=value2,v1=v1)
 
-
+@app.route('/home',methods=['GET'])
+def home():
+    crimes = models.genHome()
+    return render_template('home.html', crimes=crimes)
 
 @app.route('/search', methods=['POST'])
 def search():

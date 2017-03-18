@@ -18,6 +18,7 @@
     <link href="/static/css/sb-admin.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
     <link href="/static/css/plugins/morris.css" rel="stylesheet">
+      <link href="/static/css/mycss.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,15 +37,36 @@
     background-size: cover;
     height:100%;
   }
+  #loading-wrap{
+    display:none;
+  }
   </style>
   </head>
 <body>
   <div id = 'background' >
     <section class="webdesigntuts-workshop">
-       <form method="post" action="{{ url_for('index') }}">
+       <form id = "myForm" method="post" action="{{ url_for('index') }}">
           <input type="text"name = 'Search' placeholder="What is your area ?">
-            <button>Search</button>
+            <button onclick =change()>Search</button>
           </form>
     </section>
 </div>
+<div id="loading-wrap">
+  <div class="triangle1"></div>
+  <div class="triangle2"></div>
+  <div class="triangle3"></div>
+</div>
 </body>
+
+<script>
+function show(id, value) {
+    document.getElementById(id).style.display = value ? 'block' : 'none';
+}
+
+function change(){
+  show('loading-wrap', true);
+  show('page-wrapper', false);
+  document.getElementById("myForm").submit();
+}
+
+</script>

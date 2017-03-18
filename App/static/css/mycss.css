@@ -21,6 +21,9 @@ input[type=textsearch]:focus {
 side-nav{
   width: 100px
 }
+#sideways{
+  -webkit-transform: rotate(90deg);
+}
 
 #page-wrapper {
     display: none;

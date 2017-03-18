@@ -10,6 +10,7 @@ import googlemaps
 from datetime import datetime
 import CurrentSchool
 import index
+import home
 #from forms import ContactForm
 from flask_mail import Message, Mail
 
@@ -110,4 +111,7 @@ def overview(value1):
         error = 'Not found: Ensure in Dublin, Check spelling'
         return render_template('comparesearch.html', error=error)
     crimes = index.index(v1)
+    return crimes
+def genHome():
+    crimes = home.homecontrol()
     return crimes
