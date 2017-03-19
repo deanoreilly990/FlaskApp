@@ -686,7 +686,7 @@ body {margin:0}
 
 .icon-bar {
     width: 74px;
-    background-color: #555;
+    background-color: #333;
     float: left;
 }
 
@@ -781,33 +781,24 @@ body {margin:0}
   width:74px;
   height: 100%;
   padding-top: 0px;
-  background-color: #555;
-  position: relative;
-
-}
-.outsideicon{
-  float:left;
-  margin-left:-25px;
-  margin-top: 0px;
-  width:74px;
-  height: 100%;
-  padding-top: 0px;
-  background-color: #555;
+  background-color: #333;
   position: relative;
 
 }
 .outsideicon .icon-bar{
-  height: 100%;
-  padding-top: 10%;
-  margin-left:0px;
-  position: fixed;
-  font-size: 20px;
-
-}
+    height: 100%;
+    padding-top: 15%;
+    margin-left: 0px;
+    position: fixed;
+    font-size: 20px;
+    width: 90px;
+    }
 .insidebody{
   float:left;
   width:auto;
   height: auto;
-  margin-left: 50px;
+  margin-left: 60px;
+  padding-left: 90px;
+  padding-top: 30px;
 
 }

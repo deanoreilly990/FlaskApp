@@ -2,26 +2,11 @@
 {% block content %}
 <style>
 /* --------------------Code for search page  URL :http://codepen.io/jackrugile/pen/ABeIi----------------------------- */
-#expand{
-  background-color:#eee;
-  -webkit-transition: all 500ms linear;
-   border:5px solid black;
-   text-align: left;
- }
-#expand:hover{border:10px solid #67cbf0;font-weight: bold;}
-#names
-{
-   text-shadow: 1px 1px 6px #fff;
- 	 position: fixed;
-   top: 100px;
-   z-index:1;
-	 font-family: Lato;
-   visibility: hidden;
-}
-}
+
 </style>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <link href="/static/css/results.css" rel="stylesheet">
+<link href="/static/css/table.css" rel="stylesheet">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -72,67 +57,75 @@
           </div>
           </div>
       </div>
-      <div class="row">
-        <div class="col-lg-6 text-center">
-          <div class = "topborder">
-          <strong>Travel time to Dublin City Center </strong> Distance: {{value1[0]}}
-        </div>
-                <div class = "mydiv">
-                  <div class="icon-bar">
-                      <div id = "driving">
-                      <a href="#"><i class="fa fa-car" style="font-size:48px;color:white;"></i></a>
-                    </div>
 
-                      <div id = "transport">
-                      <a href="#"><i class="fa fa-bus" style="font-size:60px;color:white"></i></a>
-                    </div>
-                      <div id = "walking">
-                      <a href="#"><i class="material-icons" style="font-size:60px;color:white">directions_walk</i></a>
-                      </div>
+    <div class = "row">
+      <div class="col-lg-6 text-center">
+          <div class="panel panel-default">
+              <div class="panel-body">
+                <table>
+                  <tr>
+                    <th>Distance to City Center:</th>
+                    <th>{{value1[0]}}</th>
+                  </tr>
+                  <tr>
+                    <td><a href="#"><i class="fa fa-car" style="font-size:25px;color:white;"></i></a></td>
+                    <th>{{value1[1]}}</th>
+                  </tr>
+                  <tr>
+                    <td><a href="#"><i class="fa fa-bus" style="font-size:25px;color:white"></i></a></td>
+                    <th>{{value1[2]}}</th>
+                  </tr>
+                  <tr>
+                    <td><a href="#"><i class="material-icons" style="font-size:25px;color:white">directions_walk</i></a></td>
+                    <th>{{value1[3]}}</th>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 text-center">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                    <table>
+                      <tr>
+                        <th>Distance to City Center:</th>
+                        <th>{{value2[0]}}</th>
+                      </tr>
+                      <tr>
+                        <td><a href="#"><i class="fa fa-car" style="font-size:25px;color:white;"></i></a></td>
+                        <th>{{value2[1]}}</th>
+                      </tr>
+                      <tr>
+                        <td><a href="#"><i class="fa fa-bus" style="font-size:25px;color:white"></i></a></td>
+                        <th>{{value2[2]}}</th>
+                      </tr>
+                      <tr>
+                        <td><a href="#"><i class="material-icons" style="font-size:25px;color:white">directions_walk</i></a></td>
+                        <th>{{value2[3]}}</th>
+                      </tr>
+                    </table>
                   </div>
-                    <div class = "mydiv2">
-
-                      <div id="bus"> {{value1[1]}}</div>
-                      <div id="walk"> {{value1[2]}}</div>
-                      <div id="drive">{{value1[3]}}</div>
-                    </div>
+                </div>
+              </div>
             </div>
-        </div>
-        <div class="col-lg-6 text-center">
-          <div class = "topborder">
-          <strong>Travel time to Dublin City Center </strong> Distance: {{value2[0]}}
-        </div>
-                <div class = "mydiv">
-                    <div class="icon-bar">
-                        <div id = "driving2">
-                        <a href="#"><i class="fa fa-car" style="font-size:48px;color:white;"></i></a>
-                      </div>
-
-                        <div id = "transport2">
-                        <a href="#"><i class="fa fa-bus" style="font-size:60px;color:white"></i></a>
-                      </div>
-                        <div id = "walking2">
-                        <a href="#"><i class="material-icons" style="font-size:60px;color:white">directions_walk</i></a>
-                        </div>
-                    </div>
-
-                    <div class = "mydiv2">
-
-                        <div id="bus2">
-                        {{value2[1]}}
-                          </div>
-
-                        <div id="walk2">
-                         {{value2[2]}}
-                           </div>
-
-                        <div id="drive2">
-                        {{value2[3]}}
-                      </div>
-                    </div>
-            </div>
-        </div>
+      <div class="row">
+      <div class="col-lg-6 text-center">
+        <iframe
+          width="450"
+          height="250"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBnB4lX0yVOUQrIJp8ISQX5D4oVAoZEYzI&q={{compare1}}" allowfullscreen>
+        </iframe>
       </div>
+      <div class="col-lg-6 text-center">
+        <iframe
+          width="450"
+          height="250"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBnB4lX0yVOUQrIJp8ISQX5D4oVAoZEYzI&q={{compare2}}" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
       <div id = 'sale'>
       <div class="row">
           <div class="col-lg-6 text-center">
@@ -349,20 +342,7 @@
       $('page-wrapper').scroll(function() {
       $('expand').css('top', $(this).scrollTop());
         });
-        $(function(){
-            $(window).scroll(function() {
-                if ($(this).scrollTop() > 75) {
-                    $("#Name1:hidden").css('visibility','visible');
-                    $("#Name1:hidden").fadeIn('slow');
-                    $("#Name2:hidden").css('visibility','visible');
-                    $("#Name2:hidden").fadeIn('slow');
-                }
-                else {
-                    $("#Name1:visible").fadeOut("slow");
-                    $("#Name2:visible").fadeOut("slow");
-                }
-            });
-        });
+
     </script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
 <script>
@@ -371,42 +351,6 @@ $(document).ready(function(){
       $('#wrapper').css('padding-left','0px');
     });
 
-$(document).ready(function(){
-  $("#transport").mouseover(function () {
-      $('#bus').css('visibility','visible');})
-  $("#transport").mouseout(function () {
-      $('#bus').css('visibility','hidden');})
-  });
-$(document).ready(function(){
-    $("#walking").mouseover(function () {
-        $('#walk').css('visibility','visible');})
-    $("#walking").mouseout(function () {
-        $('#walk').css('visibility','hidden');})
-    });
-$(document).ready(function(){
-  $("#driving").mouseover(function () {
-      $('#drive').css('visibility','visible');})
-  $("#driving").mouseout(function () {
-      $('#drive').css('visibility','hidden');})
-  });
-  $(document).ready(function(){
-    $("#transport2").mouseover(function () {
-        $('#bus2').css('visibility','visible');})
-    $("#transport2").mouseout(function () {
-        $('#bus2').css('visibility','hidden');})
-    });
-  $(document).ready(function(){
-      $("#walking2").mouseover(function () {
-          $('#walk2').css('visibility','visible');})
-      $("#walking2").mouseout(function () {
-          $('#walk2').css('visibility','hidden');})
-      });
-  $(document).ready(function(){
-    $("#driving2").mouseover(function () {
-        $('#drive2').css('visibility','visible');})
-    $("#driving2").mouseout(function () {
-        $('#drive2').css('visibility','hidden');})
-    });
 </script>
 <script>
   $('a#saleid').click(function(){document.querySelector('#sale').scrollIntoView({ behavior: 'smooth' });});

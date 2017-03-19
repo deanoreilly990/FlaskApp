@@ -82,24 +82,14 @@
             <a class="navbar-brand" href="index.html">Dublin Dash </a>
                 <ul id="menu">
                 <li>
-                  <a href="#">Home</a></li>
+                  <a href="{{url_for('home')}}">Home</a></li>
                     <li>
-                    <a href="#">Current Data ￬</a>
-
-                    <ul class="hidden">
-                      <li><a href="#">Compare Areas </a></li>
-                      <li><a href="#">Seach areas</a></li>
-                    </ul>
+                    <a href="{{url_for('landing')}}">Current Data</a>
                   </li>
                   <li>
-                    <a href="#">Historical ￬</a>
-                    <ul class="hidden">
-                      <li><a href="#">Search by year </a></li>
-                      <li><a href="#">Key findings </a></li>
-                      <li><a href="#">Search by area</a></li>
-                    </ul>
+                    <a href="#">Historical</a>
                   </li>
-                  <li><a href="#">Prediction </a></li>
+                  <li><a href="{{url_for('comparesearch')}}">Compare Areas</a></li>
                   <li><a href="{{url_for('story')}}">Story Board</a></li>
                   <li>
                     <div id = 'search'>

@@ -97,3 +97,115 @@
     </ul>
 </li>
 </ul>
+
+<div class="row">
+  <div class="col-lg-6 text-center">
+    <div class = "topborder">
+    <strong>Travel time to Dublin City Center </strong> Distance: {{value1[0]}}
+  </div>
+          <div class = "mydiv">
+            <div class="icon-bar">
+                <div id = "driving">
+                <a href="#"><i class="fa fa-car" style="font-size:48px;color:white;"></i></a>
+              </div>
+
+                <div id = "transport">
+                <a href="#"><i class="fa fa-bus" style="font-size:60px;color:white"></i></a>
+              </div>
+                <div id = "walking">
+                <a href="#"><i class="material-icons" style="font-size:60px;color:white">directions_walk</i></a>
+                </div>
+            </div>
+              <div class = "mydiv2">
+
+                <div id="bus"> {{value1[1]}}</div>
+                <div id="walk"> {{value1[2]}}</div>
+                <div id="drive">{{value1[3]}}</div>
+              </div>
+      </div>
+  </div>
+  <div class="col-lg-6 text-center">
+    <div class = "topborder">
+    <strong>Travel time to Dublin City Center </strong> Distance: {{value2[0]}}
+  </div>
+          <div class = "mydiv">
+              <div class="icon-bar">
+                  <div id = "driving2">
+                  <a href="#"><i class="fa fa-car" style="font-size:48px;color:white;"></i></a>
+                </div>
+
+                  <div id = "transport2">
+                  <a href="#"><i class="fa fa-bus" style="font-size:60px;color:white"></i></a>
+                </div>
+                  <div id = "walking2">
+                  <a href="#"><i class="material-icons" style="font-size:60px;color:white">directions_walk</i></a>
+                  </div>
+              </div>
+
+              <div class = "mydiv2">
+
+                  <div id="bus2">
+                  {{value2[1]}}
+                    </div>
+
+                  <div id="walk2">
+                   {{value2[2]}}
+                     </div>
+
+                  <div id="drive2">
+                  {{value2[3]}}
+                </div>
+              </div>
+      </div>
+  </div>
+</div>
+$(function(){
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 75) {
+            $("#Name1:hidden").css('visibility','visible');
+            $("#Name1:hidden").fadeIn('slow');
+            $("#Name2:hidden").css('visibility','visible');
+            $("#Name2:hidden").fadeIn('slow');
+        }
+        else {
+            $("#Name1:visible").fadeOut("slow");
+            $("#Name2:visible").fadeOut("slow");
+        }
+    });
+});
+$(document).ready(function(){
+  $("#transport").mouseover(function () {
+      $('#bus').css('visibility','visible');})
+  $("#transport").mouseout(function () {
+      $('#bus').css('visibility','hidden');})
+  });
+$(document).ready(function(){
+    $("#walking").mouseover(function () {
+        $('#walk').css('visibility','visible');})
+    $("#walking").mouseout(function () {
+        $('#walk').css('visibility','hidden');})
+    });
+$(document).ready(function(){
+  $("#driving").mouseover(function () {
+      $('#drive').css('visibility','visible');})
+  $("#driving").mouseout(function () {
+      $('#drive').css('visibility','hidden');})
+  });
+  $(document).ready(function(){
+    $("#transport2").mouseover(function () {
+        $('#bus2').css('visibility','visible');})
+    $("#transport2").mouseout(function () {
+        $('#bus2').css('visibility','hidden');})
+    });
+  $(document).ready(function(){
+      $("#walking2").mouseover(function () {
+          $('#walk2').css('visibility','visible');})
+      $("#walking2").mouseout(function () {
+          $('#walk2').css('visibility','hidden');})
+      });
+  $(document).ready(function(){
+    $("#driving2").mouseover(function () {
+        $('#drive2').css('visibility','visible');})
+    $("#driving2").mouseout(function () {
+        $('#drive2').css('visibility','hidden');})
+    });
