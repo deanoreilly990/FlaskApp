@@ -45,7 +45,7 @@ def gathersearch(name,year):
         datainfo = handle.Data2016.find({'PostCode':output},{'Sum':1,'_id':0,'Min':1,'Max':1,'New Mean':1})
 
     location = 'null'
-    DataHistory.control(int(year),int(area))
+    DataHistory.control(int(year),area)
     fingal = ['11','13','15','17','NCD']
     DC =['1','3','7','8','9','2','10']
     SD =['12','20','22','24','D6w','WCD']

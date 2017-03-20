@@ -188,7 +188,7 @@ def DH2(year, Postcode): #Dublin + Postcode
             )
         ),
         autosize=False,
-        width=400,
+        width=500,
         height=500,
     )
     data = [trace,trace0]
@@ -255,14 +255,17 @@ def DH3(year,Postcode):#just PC
     )
     data = [trace0, trace1]
     layout = go.Layout(
+        legend=dict(
+            orientation="h")
+    ,
         title='Crimes in Dublin:' + str(Postcode),
         autosize=False,
         width=500,
-        height=500,
+        height=450,
         margin=go.Margin(
             l=45,
             r=10,
-            b=50,
+            b=100,
             t=50,
             pad=4
         ),
@@ -486,7 +489,7 @@ def DH6(Postcode):#string postcode
                           'x1': '35-39', 'y0': 0, 'y1': '25,066', 'line': {'color': 'red'}}],
               'autosize': False,
               'width': 500,
-              'height': 300,
+              'height': 400,
               'margin': {'l': 50, 'r': 5, 'b': 70, 't': 50, 'pad': 4},
               'xaxis': {'title': 'Age Range'},
               'yaxis': {'title': 'Population'}

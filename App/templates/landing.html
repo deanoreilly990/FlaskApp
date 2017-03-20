@@ -27,8 +27,22 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+  <link href='https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
   <style>
-  /* Code obtained from https://css-tricks.com/perfect-full-page-background-image/ */
+  /* Code obtained from https://css-tricks.com/perfect-full-page-background-image/  + http://typespiration.com/design/the-envelope/*/
+  h1 {
+	color: #fff;
+	font-family: 'Cormorant Garamond';
+	border-bottom: 3px solid #333;
+	font-size: 48px;
+	font-weight: 400;
+	line-height: 72px;
+	letter-spacing: 35px;
+	margin-bottom: 57px;
+	text-align: center;
+	text-indent: 24px;
+	text-transform: uppercase;
+}
   body{
     background: url(/static/images/Background2.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -40,16 +54,23 @@
   #loading-wrap{
     display:none;
   }
+  #page{
+    display: block;
+  }
+  /* End fo Code Obtained */
   </style>
   </head>
 <body>
+  <h1> Dublin Dash </h1>
   <div id = 'background' >
     <section class="webdesigntuts-workshop">
+    <div id = 'page'>
        <form id = "myForm" method="post" action="{{ url_for('index') }}">
           <input type="text"name = 'Search' placeholder="What is your area ?">
             <button onclick =change()>Search</button>
           </form>
     </section>
+  </div>
 </div>
 <div id="loading-wrap">
   <div class="triangle1"></div>
@@ -65,7 +86,7 @@ function show(id, value) {
 
 function change(){
   show('loading-wrap', true);
-  show('page-wrapper', false);
+  show('page', false);
   document.getElementById("myForm").submit();
 }
 
