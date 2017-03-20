@@ -795,7 +795,7 @@ body {margin:0}
     }
 .insidebody{
   float:left;
-  width:auto;
+  width:90%;
   height: auto;
   margin-left: 60px;
   padding-left: 90px;

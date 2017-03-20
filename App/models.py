@@ -11,6 +11,7 @@ from datetime import datetime
 import CurrentSchool
 import index
 import home
+import DataHistory
 #from forms import ContactForm
 from flask_mail import Message, Mail
 
@@ -44,11 +45,12 @@ def gathersearch(name,year):
         datainfo = handle.Data2016.find({'PostCode':output},{'Sum':1,'_id':0,'Min':1,'Max':1,'New Mean':1})
 
     location = 'null'
-
+    DataHistory.control(int(year),int(area))
     fingal = ['11','13','15','17','NCD']
     DC =['1','3','7','8','9','2','10']
     SD =['12','20','22','24','D6w','WCD']
     DLR =['4','6','14','16','18','Dun Laoghaire Rathdown']
+
     if area in fingal:
         location ='Fingal'
     elif area in SD:
@@ -57,6 +59,7 @@ def gathersearch(name,year):
         location = 'Dublin City'
     elif area in DLR:
         location = 'DLR'
+
     return area,datainfo,location
 
 def getDistanceInfo(area):

@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <style>
-/* --------------------Code for search page  URL :http://codepen.io/jackrugile/pen/ABeIi----------------------------- */
+.container-fluid{
+  padding-right: 0px;
+}
 
 </style>
 <script type="text/javascript" src="js/bootstrap.js"></script>
@@ -68,16 +70,16 @@
                     <th>{{value1[0]}}</th>
                   </tr>
                   <tr>
-                    <td><a href="#"><i class="fa fa-car" style="font-size:25px;color:white;"></i></a></td>
+                    <td><i class="fa fa-car" style="font-size:24px;color:black;padding-left:120px"></i></td>
+                    <th>{{value1[3]}}</th>
+                  </tr>
+                  <tr>
+                    <td><a href="#"><i class="fa fa-bus" style="font-size:24px;color:black;padding-left:120px;"></i></a></td>
                     <th>{{value1[1]}}</th>
                   </tr>
                   <tr>
-                    <td><a href="#"><i class="fa fa-bus" style="font-size:25px;color:white"></i></a></td>
+                    <td><a href="#"><i class="material-icons" style="font-size:24px;color:black;padding-left:120px">directions_walk</i></a></td>
                     <th>{{value1[2]}}</th>
-                  </tr>
-                  <tr>
-                    <td><a href="#"><i class="material-icons" style="font-size:25px;color:white">directions_walk</i></a></td>
-                    <th>{{value1[3]}}</th>
                   </tr>
                 </table>
               </div>
@@ -92,16 +94,16 @@
                         <th>{{value2[0]}}</th>
                       </tr>
                       <tr>
-                        <td><a href="#"><i class="fa fa-car" style="font-size:25px;color:white;"></i></a></td>
+                        <td><a href="#"><i class="fa fa-car" style="font-size:25px;color:black;padding-left:120px"></i></a></td>
+                        <th>{{value2[3]}}</th>
+                      </tr>
+                      <tr>
+                        <td><a href="#"><i class="fa fa-bus" style="font-size:25px;color:black;padding-left:120px"></i></a></td>
                         <th>{{value2[1]}}</th>
                       </tr>
                       <tr>
-                        <td><a href="#"><i class="fa fa-bus" style="font-size:25px;color:white"></i></a></td>
+                        <td><a href="#"><i class="material-icons" style="font-size:25px;color:black;padding-left:120px">directions_walk</i></a></td>
                         <th>{{value2[2]}}</th>
-                      </tr>
-                      <tr>
-                        <td><a href="#"><i class="material-icons" style="font-size:25px;color:white">directions_walk</i></a></td>
-                        <th>{{value2[3]}}</th>
                       </tr>
                     </table>
                   </div>
