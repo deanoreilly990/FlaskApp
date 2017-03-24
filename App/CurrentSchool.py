@@ -1,6 +1,6 @@
 def get_daft():
     from pymongo import MongoClient
-    client = MongoClient('localhost:27017')
+    client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/rentalData')
     db = client.rentalData
     return db
 def getdate():
@@ -32,7 +32,7 @@ def getdate():
     return date,enddate
 def get_db():
     from pymongo import MongoClient
-    client = MongoClient('localhost:27017')
+    client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
     db=client.HistData
     return db
 def logdata(value1, value2):

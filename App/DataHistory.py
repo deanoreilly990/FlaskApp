@@ -1,6 +1,6 @@
 def get_hist():
     from pymongo import MongoClient
-    client = MongoClient('localhost:27017')
+    client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
     db = client.HistData
     return db
 def control(year,postcode):
@@ -389,8 +389,9 @@ def DH5(year,Postcode):#Postcode as string
     data = pd.DataFrame(list(data))
     fingal = ['11', '13', '15', '17', 'NCD']
     DC = ['1', '3', '7', '8', '9', '2', '10']
-    SD = ['12', '20', '22', '24', 'D6w', 'WCD']
+    SD = ['12', '20', '22', '24', '6w', 'WCD']
     DLR = ['4', '6', '14', '16', '18', 'Dun Laoghaire Rathdown']
+    location = Postcode
     if Postcode in fingal:
         location = 'Fingal'
     elif Postcode in SD:

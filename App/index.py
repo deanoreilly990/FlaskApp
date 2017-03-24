@@ -1,6 +1,6 @@
 def get_hist():
     from pymongo import MongoClient
-    client = MongoClient('localhost:27017')
+    client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
     db = client.HistData
     return db
 def index1(postcode):

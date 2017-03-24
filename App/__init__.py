@@ -16,20 +16,12 @@ def connect():
 # Substitute the 5 pieces of information you got when creating
 # the Mongo DB Database (underlined in red in the screenshots)
 # Obviously, do not store your password as plaintext in practice
-    connection = MongoClient('mongodb://localhost:27017')
+    connection = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
     handle = connection["HistData"]
     return handle
 handle=connect()
 
+
 import os
 from config import basedir
 from App import views, models
-
-app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config["MAIL_PORT"] = 465
-app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = 'deanoreilly990@gmail.com'
-app.config["MAIL_PASSWORD"] = 'Abbie321!'
-
-from views import mail
-mail.init_app(app)
