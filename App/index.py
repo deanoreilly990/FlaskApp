@@ -92,7 +92,7 @@ def index1(postcode):
         ),
     )
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/History/index/index1.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/History/index/index1.html',show_link=False,auto_open=False)
 
 #Prep Work for Crimes Overview -- Index 2
 
@@ -212,7 +212,7 @@ def index3(postcode):
         )
     data = [trace]
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/History/index/index3.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/History/index/index3.html',show_link=False,auto_open=False)
 
 def index(postcode):
     postcode = str(postcode)

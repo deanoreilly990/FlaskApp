@@ -153,7 +153,7 @@ def home1():
         ),
     )
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/History/home1.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/History/home1.html',show_link=False,auto_open=False)
 def home2():
     import pandas as pd
     returnd =[]
@@ -212,7 +212,7 @@ def home3():
         ),
     )
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/History/home3.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/History/home3.html',show_link=False,auto_open=False)
 def home4():
     import pandas as pd
 
@@ -252,7 +252,7 @@ def home4():
         ),
     )
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/History/home4.html', show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/History/home4.html', show_link=False,auto_open=False)
 
 def homecontrol():
     home1()

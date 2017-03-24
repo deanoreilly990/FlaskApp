@@ -93,7 +93,7 @@ def DH1(year,Postcode): # Needs to be Dublin + postcode
     )
     data = [trace, trace0]
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/history/H1.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig,filename='/home/user/FlaskApp/App/static/images/history/H1.html',show_link=False,auto_open=False)
 
 
 
@@ -193,7 +193,7 @@ def DH2(year, Postcode): #Dublin + Postcode
     )
     data = [trace,trace0]
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/history/H2.html', show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/history/H2.html', show_link=False,auto_open=False)
 
 
 
@@ -276,7 +276,7 @@ def DH3(year,Postcode):#just PC
             title='Crimes', )
     )
     fig = dict(data=data, layout=layout)
-    plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/history/H3.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig,filename='/home/user/FlaskApp/App/static/images/history/H3.html',show_link=False,auto_open=False)
 
 
 
@@ -372,7 +372,7 @@ def DH4(year,Postcode):# Postcode String
         )
     )
     fig = dict(data=data, layout=layout)
-    plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/history/H4.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig,filename='/home/user/FlaskApp/App/static/images/history/H4.html',show_link=False,auto_open=False)
 
 
 
@@ -435,7 +435,7 @@ def DH5(year,Postcode):#Postcode as string
     )
     data = [trace1]
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/history/H5.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig,filename='/home/user/FlaskApp/App/static/images/history/H5.html',show_link=False,auto_open=False)
 
 
 
@@ -497,4 +497,4 @@ def DH6(Postcode):#string postcode
               }
     data = [trace]
     fig = dict(data=data, layout=layout)
-    plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/history/H6.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig,filename='/home/user/FlaskApp/App/static/images/history/H6.html',show_link=False,auto_open=False)
