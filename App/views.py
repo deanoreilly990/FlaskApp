@@ -1,7 +1,6 @@
 from flask import render_template, flash, redirect, session, url_for, request,session
 from flask_login import login_user, logout_user, current_user, login_required
 from App import app,handle,mysql
-from .forms import LoginForm
 from flask import jsonify
 import pandas as pd
 import models
@@ -36,6 +35,12 @@ def landing():
     global year
     year = '2016'
     return render_template('landing.html')
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('error.html')
+@app.errorhandler(500)
+def page_not_found(e):
+    return render_template('error.html')
 
 
 @app.route('/index',methods=['POST'])
@@ -45,8 +50,11 @@ def index():
     global sessionArea
     sessionArea=request.form['Search']
     sessionArea.strip()
-    crimes = models.overview(sessionArea)
-    return render_template('index1.html',crimes=crimes)
+    crimes,mortage = models.overview(sessionArea)
+    if 'Not found' in crimes:
+        return render_template('error.html',error=crimes)
+    else:
+        return render_template('index1.html',crimes=crimes,mortage = mortage)
 
 @app.route('/year')
 def year():

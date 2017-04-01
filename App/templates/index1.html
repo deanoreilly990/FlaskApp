@@ -21,6 +21,36 @@
                 </ol>
             </div>
         </div>
+        <div class="row">
+          <div class="col-lg-12 text-center">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                    <table>
+                      <tr>
+                        <th>Mortage Prediction </th>
+                        <th>Euro</th>
+                      </tr>
+                      <tr>
+                        <td>Average House price </td>
+                            <td>{{mortage[1]}}</td>
+                      </tr>
+                      <tr>
+                        <td>Amount needed(Personal 20%)</td>
+                            <td>{{mortage[3]}}</td>
+                      </tr>
+                      <tr>
+                        <td>Amount to borrow</td>
+                            <td>{{mortage[2]}}</td>
+                      </tr>
+                      <tr>
+                        <td>Monthly Repayments over 30 Year Mortage</td>
+                            <td>{{mortage[0]}}</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+        </div>
 
 
         <!-- Page Heading -->
@@ -97,18 +127,8 @@
               </div>
           </div>
       </div>
-      <div class="row">
-        <div class="col-lg-12 text-center">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                  {%for x in crimes%}
-                    {{x}}
-                  {%endfor%}
-                </div>
-              </div>
-            </div>
-        </div>
-
+    </div>
+  </div>
   </body>
 
   {% endblock %}

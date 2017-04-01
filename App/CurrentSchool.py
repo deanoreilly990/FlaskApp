@@ -32,7 +32,7 @@ def getdate():
     return date,enddate
 def get_db():
     from pymongo import MongoClient
-    client = MongoClient('mongodb://user:Abbie321@83.212.82.156:27017/HistData')
+    client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
     db=client.HistData
     return db
 def logdata(value1, value2):
@@ -94,7 +94,7 @@ def plot(name,boys,girls,religions,religionsCount,v):
                           'margin':{'l':10,'r':10,'b':50,'t':50,'pad':4}}
                  }
 
-    plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/2017/V1-'+v+'.html', show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/2017/V1-'+v+'.html', show_link=False,auto_open=False)
     fig = {
         'data': [{'labels': religions,
                   'values': religionsCount,
@@ -106,7 +106,7 @@ def plot(name,boys,girls,religions,religionsCount,v):
                           'margin':{'l':10,'r':10,'b':50,'t':50,'pad':4}}
                  }
 
-    plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/2017/V2-'+v+'.html', show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/2017/V2-'+v+'.html', show_link=False,auto_open=False)
 
 def bedroomsLastMonth(value1,v1):
     import pandas as pd
@@ -142,7 +142,7 @@ def bedroomsLastMonth(value1,v1):
                           'margin':{'l':10,'r':10,'b':50,'t':50,'pad':4}}
                  }
 
-    plotly.offline.plot(fig,filename='/home/user/FlaskApp/App/static/images/2017/V3-'+v1+'.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/2017/V3-'+v1+'.html',show_link=False,auto_open=False)
 def averagePerRoom(pc,version):
 
     import pandas as pd
@@ -210,7 +210,7 @@ def averagePerRoom(pc,version):
     )
     data = [trace]
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/2017/V4-' + version + '.html', show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/2017/V4-' + version + '.html', show_link=False,auto_open=False)
 
 
 def rentalCharts(pc,v1):
@@ -311,7 +311,7 @@ def rentalCharts(pc,v1):
                               'height':400,
                               'margin':{'l':10,'r':10,'b':50,'t':50,'pad':4}}
                      }
-    plotly.offline.plot(fig,filename='/home/user/FlaskApp/App/static/images/2017/V5-'+v1+'.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/2017/V5-'+v1+'.html',show_link=False,auto_open=False)
 
     trace = go.Bar(
             x=['1 Bed-Studio','2 Bed','3 Bed','4 Bed','5 Bed'],
@@ -336,7 +336,7 @@ def rentalCharts(pc,v1):
     )
     data = [trace]
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/2017/V6-' + v1 + '.html', show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/2017/V6-' + v1 + '.html', show_link=False,auto_open=False)
     trace = go.Bar(
             x=['2 Bed','3 Bed','4 Bed','5 Bed'],
             y=houseaverage
@@ -360,7 +360,7 @@ def rentalCharts(pc,v1):
     )
     data = [trace]
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/2017/V7-' + v1 + '.html', show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/2017/V7-' + v1 + '.html', show_link=False,auto_open=False)
     apartmenttype.append(typecount[0])
     fig = {
                 'data': [{'labels': ['2 Bed','3 Bed','4 Bed','5 Bed','Studio - 1 bed'],
@@ -372,7 +372,7 @@ def rentalCharts(pc,v1):
                               'height':400,
                               'margin':{'l':10,'r':20,'b':50,'t':50,'pad':4}}
                      }
-    plotly.offline.plot(fig,filename='/home/user/FlaskApp/App/static/images/2017/V8-'+v1+'.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/2017/V8-'+v1+'.html',show_link=False,auto_open=False)
     fig = {
                 'data': [{'labels': ['2 Bed','3 Bed','4 Bed','5 Bed'],
                               'values': housetype,
@@ -383,7 +383,7 @@ def rentalCharts(pc,v1):
                               'height':400,
                               'margin':{'l':10,'r':20,'b':50,'t':50,'pad':4}}
                      }
-    plotly.offline.plot(fig,filename='/home/user/FlaskApp/App/static/images/2017/V9-'+v1+'.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/2017/V9-'+v1+'.html',show_link=False,auto_open=False)
 
 def saleovertime(postcode,v1):
     """ This function is used in the gathering of the averaging sale information in each area given. The function is also responsiable for producing the
@@ -396,19 +396,19 @@ def saleovertime(postcode,v1):
     import datetime
     py.sign_in('deanoreilly990', 'WgnPSOLqPlZ5uXFu6WKx')
     db = get_daft()
-    data = db.Average.find({},{'_id':0})
+    data = db.Average.find({}, {'_id': 0})
     data = pd.DataFrame(list(data))
     month = datetime.datetime.now()
     month = month.strftime("%b")
-    bed2av =[]
-    bed3av =[]
-    bed4av =[]
-    data = data[data['Postcode']==str(postcode)]
-    Months = ['Feb','March','April','May','June','July','August','Sept','Nov','Dec','Jan']
+    bed2av = []
+    bed3av = []
+    bed4av = []
+    data = data[data['Postcode'] == str(postcode)]
+    Months = ['Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'Sept', 'Nov', 'Dec', 'Jan']
     columns = data.columns
-    count=[]
+    count = []
     for i in columns:
-        if i =='Postcode':
+        if i == 'Postcode':
             pass
         else:
             count.append(i)
@@ -418,42 +418,43 @@ def saleovertime(postcode,v1):
         bed4av.append(data[i].values[0][2])
 
     trace0 = go.Scatter(
-        x = Months,
-        y = bed2av,
-        mode = 'lines',
-        name = '2 Bed Average'
+        x=Months,
+        y=bed2av,
+        mode='lines',
+        name='2 Bed Average'
     )
     trace1 = go.Scatter(
-        x = Months,
-        y = bed3av,
-        mode = 'lines+markers',
-        name = '3 Bed Average'
+        x=Months,
+        y=bed3av,
+        mode='lines+markers',
+        name='3 Bed Average'
     )
     trace2 = go.Scatter(
-        x = Months,
-        y = bed4av,
-        mode = 'markers',
-        name = '4 Bed Average '
+        x=Months,
+        y=bed4av,
+        mode='markers',
+        name='4 Bed Average '
     )
     layout = go.Layout(
-        title ='Average House Sale Price, Per Room Count',
+        title='Average House Sale Price, Per Room Count',
         yaxis=dict(
             title='Average Price'),
         xaxis=dict(
-            title= 'Months'),
+            title='Months'),
         autosize=False,
-            width=500,
-            height=400,
-            margin=go.Margin(
-                l=80,
-                r=10,
-                b=90,
-                t=50,
-                pad=10)
+        width=500,
+        height=400,
+        margin=go.Margin(
+            l=80,
+            r=10,
+            b=90,
+            t=50,
+            pad=10)
     )
-    data = [trace0,trace1,trace2]
+    data = [trace0, trace1, trace2]
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig,filename='/home/user/FlaskApp/App/static/images/2017/V10-'+v1+'.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/2017/V10-' + v1 + '.html', show_link=False,
+                        auto_open=False)
 def rentovertime(postcode,v1):
     """ This function is used in the gathering of the averaging rental information in each area given. The function is also responsiable for producing the
     Data visualisation aids needed
@@ -523,4 +524,4 @@ def rentovertime(postcode,v1):
     )
     data = [trace0,trace1,trace2]
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig,filename='/FlaskApp/App/static/images/2017/V11-'+v1+'.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/2017/V11-'+v1+'.html',show_link=False,auto_open=False)

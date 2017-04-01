@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+  <style>
+  body{
+    background: url(/static/images/errorbackground.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height:100%;
+  }
+  #page{
+    position: fixed; /* or absolute */
+    top: 50%;
+    left: 45%;
+  }
+
+  #loading-wrap{
+    display:none;
+  }
+  #page-wrapper{
+    display: block;
+    background:rgba(0,0,0,0.5);
+  }
+  input[type=textsearch1] {
+
+      box-sizing: border-box;
+      height:100%;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      background-color: white;
+      background-image: url('searchicon.png');
+      background-position: 10px 10px;
+      background-repeat: no-repeat;
+      padding: 12px 20px 12px 40px;
+      -webkit-transition: width 0.4s ease-in-out;
+      transition: width 0.4s ease-in-out;
+  }
+  input[type=textsearch1]:focus {
+      width: 100%;
+  }
+  </style>
+</head>
+
+<body>
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+      <div id = 'page'>
+         <form id = "myForm" method="post" action="{{ url_for('index') }}">
+            <input type="textsearch1"name = 'Search' placeholder="What is your area ?">
+              <button onclick =change()>Search</button>
+            </form>
+      </section>
+      {%if error %}
+        <span class="label label-danger">Error:{{ error }}</span>
+      {%else%}
+        <span class="label label-danger">Error: Ooops Something went wrong</span>
+      {%endif%}
+    </div>
+  </div>
+  </div>
+  <div id="loading-wrap">
+    <div class="triangle1"></div>
+    <div class="triangle2"></div>
+    <div class="triangle3"></div>
+  </div>
+</body>
+<script>
+function show(id, value) {
+    document.getElementById(id).style.display = value ? 'block' : 'none';
+}
+function change(){
+  show('loading-wrap', true);
+  show('page', false);
+  document.getElementById("myForm").submit();
+}
+</script>
+{% endblock %}

@@ -3,6 +3,11 @@ def get_hist():
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
     db = client.HistData
     return db
+def get_daft():
+    from pymongo import MongoClient
+    client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/rentalData')
+    db = client.rentalData
+    return db
 def index1(postcode):
     import pandas as pd
     from pymongo import MongoClient
@@ -92,7 +97,7 @@ def index1(postcode):
         ),
     )
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/History/index/index1.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/History/index/index1.html',show_link=False,auto_open=False)
 
 #Prep Work for Crimes Overview -- Index 2
 
@@ -212,11 +217,65 @@ def index3(postcode):
         )
     data = [trace]
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/History/index/index3.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/History/index/index3.html',show_link=False,auto_open=False)
+
+def main(AverageH):
+    import pandas
+    import requests
+    from BeautifulSoup import BeautifulSoup
+    import logging
+    import re
+    import time
+    Cal = AverageH  * 20 //100
+    Needed = Cal
+    Cal = AverageH - Cal
+    f = lambda x: x.replace(',', '')
+    flo = lambda x: float(x)
+    form = lambda x:round(x,2)
+    url = 'http://www.mortgages.ie/go/first_time_buyers/mortgage_payments_calculator?mode=basic&go=go&buyer_type=First+Time+Buyer&house_price=' + str(
+        AverageH) + '&product=2&amt=' + str(Cal) + '&lender=-1&status=Married&comparison=loc&term=30&x=44&y=18'
+    response = requests.get(url)
+    html = response.content
+    soup = BeautifulSoup(html)
+    table = soup.find('table', attrs={'class': 'results_table_advanced'})
+    list_of_rows = []
+    for line in table.findAll('td'):
+        list_of_rows.append(line)
+    OverallValue = []
+    for i in list_of_rows:
+        i = str(i)
+        if '<td onmouseover' in i:
+            i = i.split(';')
+            OverallValue.append(i[2].replace('&lt', ''))
+    OverallValue = map(f, OverallValue)
+    OverallValue = map(flo, OverallValue)
+    mins = min(OverallValue)
+    mins = mins / 360  #360 /12 returns 30 which is the average number of years a mortage is over
+    mins = form(mins)
+    return mins,AverageH,Cal,Needed
+
+def function(postcode):
+    import pandas
+    import time
+    postcode = str(postcode)
+    date = (time.strftime("%d/%m/%Y"))
+    date = date.split('/')
+    date = int(date[1])
+    date = date -2
+    months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    date = months[date]
+    db = get_daft()
+    info = db.Average.find({'Postcode':postcode},{date:1,'_id':0})
+    info = pandas.DataFrame(list(info))
+    value =0
+    for i in info.values[0][0]:
+        value = value + i
+    return main(value/3)
 
 def index(postcode):
     postcode = str(postcode)
     index1(postcode) #int number
     crimes = crime(postcode) #String number
     index3(postcode)#String number
-    return crimes
+    mortage = function(postcode)
+    return crimes, mortage

@@ -1,7 +1,6 @@
 from flask import render_template, flash, redirect, session, url_for, request,session
 from flask_login import login_user, logout_user, current_user, login_required
 from App import app,handle,mysql
-from .forms import LoginForm
 from flask_script import Manager
 from flask import jsonify
 import pandas as pd
@@ -112,9 +111,9 @@ def overview(value1):
             v1 =output
     except:
         error = 'Not found: Ensure in Dublin, Check spelling'
-        return render_template('comparesearch.html', error=error)
-    crimes = index.index(v1)
-    return crimes
+        return (error)
+    crimes ,mortage = index.index(v1)
+    return crimes, mortage 
 def genHome():
     crimes = home.homecontrol()
     return crimes
