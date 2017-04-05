@@ -1,9 +1,17 @@
+###########################################
+# This script is the evolutionary script  #
+# of the orginal static code developed    #
+#  in early versions.                     #
+##########################################
+
 def get_hist():
     from pymongo import MongoClient
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
     db = client.HistData
     return db
+
 def control(year,postcode):
+    ## This function acts as control function for the script
     DH1(year,'Dublin '+str(postcode))
     DH2(year,'Dublin '+str(postcode))
     DH3(year,str(postcode))
@@ -11,6 +19,7 @@ def control(year,postcode):
     DH5(year,str(postcode))
     DH6(str(postcode))
 def DH1(year,Postcode): # Needs to be Dublin + postcode
+    # Used to identify year and gather information regarding that year. Create Graph
     import plotly.plotly as py
     import plotly.graph_objs as go
     import plotly
@@ -96,9 +105,12 @@ def DH1(year,Postcode): # Needs to be Dublin + postcode
     plotly.offline.plot(fig,filename='/home/user/FlaskApp/App/static/images/history/H1.html',show_link=False,auto_open=False)
 
 
-
-
-
+def testpath(filename):
+    ## Used in testing
+    import os.path
+    path = filename
+    exist = os.path.exists(path)
+    return exist
 
 
 

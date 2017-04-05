@@ -1,3 +1,10 @@
+##############################################
+# Used in the home functionality -           #
+# Invoked by the Model, Returns data to      #
+# the model                                  #
+##############################################
+
+
 def get_hist():
     from pymongo import MongoClient
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
@@ -255,8 +262,9 @@ def home4():
     plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/History/home4.html', show_link=False,auto_open=False)
 
 def homecontrol():
+    ## Acts as control for this script
     home1()
     home3()
     home4()
     crimes = home2()
-    return crimes
+    return crimes # Returns crimes rates 

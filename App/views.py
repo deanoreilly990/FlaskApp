@@ -1,60 +1,53 @@
+################################################
+#  This script acts as the controller.
+# It is the central control of the application
+#
+#
+
 from flask import render_template, flash, redirect, session, url_for, request,session
 from flask_login import login_user, logout_user, current_user, login_required
 from App import app,handle,mysql
 from flask import jsonify
 import pandas as pd
 import models
-#from forms import ContactForm
-from flask_mail import Message, Mail
 
-mail = Mail()
 global year
 global user
 user = None
 global sessionArea
 
-#Route to handle User login
-@app.route('/login', methods=['POST','GET'])
-def login():
-    global user
-    error = None
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        cursor = mysql.connect().cursor()
-        cursor.execute("SELECT * from User where UserNAME='" + username + "' and Password='" + password + "'")
-        data = cursor.fetchone()
-        if data is None:
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            user = username
-            return redirect(url_for('index'))
-    return render_template('login.html', error=error)
-@app.route('/')
+
+@app.route('/') # If the application identifies there is no additional parameters after the url
 def landing():
+    # This function returns the landing page
     global year
     year = '2016'
     return render_template('landing.html')
+
+# Handles the errors if they should arise
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('error.html')
 @app.errorhandler(500)
 def page_not_found(e):
     return render_template('error.html')
+@app.errorhandler(502)
+def page_not_found(e):
+    return render_template('error.html')
 
 
-@app.route('/index',methods=['POST'])
+@app.route('/index',methods=['POST']) ## Listens for a post request on the /index url
 def index():
     global year
     global user
     global sessionArea
-    sessionArea=request.form['Search']
+    sessionArea=request.form['Search'] # gathers the information from the posted object
     sessionArea.strip()
-    crimes,mortage = models.overview(sessionArea)
-    if 'Not found' in crimes:
+    crimes,mortage = models.overview(sessionArea) # Excutes the backend script
+    if 'Not found' in crimes: # Checks for errors
         return render_template('error.html',error=crimes)
     else:
-        return render_template('index1.html',crimes=crimes,mortage = mortage)
+        return render_template('index1.html',crimes=crimes,mortage = mortage) # Passes data back to frontend
 
 @app.route('/year')
 def year():
@@ -84,6 +77,8 @@ def result():
     value1= models.getDistanceInfo(compare1)
     value2 = models.getDistanceInfo(compare2)
     v1 = models.generateGraphs(compare1,compare2)
+    if 'Not found:' in v1:
+        return render_template('comparesearch.html',error = v1)
     return render_template('result.html',compare1=compare1,compare2=compare2,value1=value1,value2=value2,v1=v1)
 
 @app.route('/home',methods=['GET'])
@@ -114,11 +109,3 @@ def search():
 @app.route('/story')
 def story():
     return render_template('timeline.html')
-
-
-from flask import request
-from flask import jsonify
-
-@app.route("/get_my_ip", methods=["GET"])
-def get_my_ip():
-    return jsonify({'ip': request.remote_addr}), 200

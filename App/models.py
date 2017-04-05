@@ -1,20 +1,40 @@
+##############################################
+# Acts as the access point from              #
+# Controller functions to backend scripts    #
+# and database connection                    #
+##############################################
 from flask import render_template, flash, redirect, session, url_for, request,session
-from flask_login import login_user, logout_user, current_user, login_required
 from App import app,handle,mysql
-from flask_script import Manager
-from flask import jsonify
 import pandas as pd
-import models
 import googlemaps
 from datetime import datetime
-import CurrentSchool
+import CompareAreas
 import index
 import home
 import DataHistory
-#from forms import ContactForm
-from flask_mail import Message, Mail
+
+def test_databaseHist():
+    ## Function used in testing
+    from pymongo import MongoClient
+    client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
+    try:
+        client.server_info()
+        return True
+    except:
+        return False
+
+def test_databaseDaft():
+    ## Used in the testing of Access to collection
+    from pymongo import MongoClient
+    client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/rentalData')
+    try:
+        client.server_info()
+        return True
+    except:
+        return False
 
 def gathersearch(name,year):
+    ## Gathers the information regarding the area.
     import re
     sessionArea = handle.PC.find({'Area': re.compile(name, re.IGNORECASE)},{'PC':1,'_id':0})
     try:
@@ -62,7 +82,8 @@ def gathersearch(name,year):
     return area,datainfo,location
 
 def getDistanceInfo(area):
-    gmaps = googlemaps.Client(key='AIzaSyA6Ie_h7a_Qgl0vT1IEFrf3qeHMtGg_5cs')
+    ## Function that deals with the Googlemaps functionality
+    gmaps = googlemaps.Client(key='AIzaSyA6Ie_h7a_Qgl0vT1IEFrf3qeHMtGg_5cs') # Connects to client
     now = datetime.now()
     directions_results = gmaps.directions(area,"o'connell street,dublin",mode="transit",departure_time=now)
     walking =gmaps.directions(area,"o'connell street,dublin",mode="walking",departure_time=now)
@@ -76,10 +97,9 @@ def getDistanceInfo(area):
     transtime = directions_results[0][keys[6]][0][key[7]][u'text']
     transtime = transtime.encode('ascii','ignore')
     drivingtime = driving[0][keys[6]][0][key[7]][u'text']
-    return distance,transtime,walkingtime,drivingtime
+    return distance,transtime,walkingtime,drivingtime ## Returns variables.
 
 def generateGraphs(value1,value2):
-    #logd = Manager(logdata)
     import re
     v1 = handle.PC.find({'Area': re.compile(value1, re.IGNORECASE)},{'PC':1,'_id':0})
     v2 = handle.PC.find({'Area': re.compile(value2, re.IGNORECASE)},{'PC':1,'_id':0})
@@ -94,10 +114,10 @@ def generateGraphs(value1,value2):
             output = output['PC']
             output = str(output)
             v2 = output
-    except:
+    except: ## Error checking 
         error = 'Not found: Ensure in Dublin, Check spelling'
-        return render_template('comparesearch.html', error=error)
-    v1,v2 = CurrentSchool.logdata(v1,v2)
+        return error
+    v1,v2 = CompareAreas.logdata(v1,v2)
     return v1,v2
 
 def overview(value1):
@@ -113,7 +133,7 @@ def overview(value1):
         error = 'Not found: Ensure in Dublin, Check spelling'
         return (error)
     crimes ,mortage = index.index(v1)
-    return crimes, mortage 
+    return crimes, mortage
 def genHome():
     crimes = home.homecontrol()
     return crimes

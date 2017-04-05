@@ -1,9 +1,19 @@
+##################################################
+# This script is used during the compare areas   #
+# functionality.                                 #
+# Invoked from the model                         #
+##################################################
+
+
+
 def get_daft():
+    #Function used to gather and return a connection to the remote data connection
     from pymongo import MongoClient
-    client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/rentalData')
+    client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/rentalData')# Database has been secured to an industry standard
     db = client.rentalData
-    return db
+    return db # Database connection is returned as an object
 def getdate():
+    # This function is used to identify which month the various functions should be processing
     import datetime
     Months = {
         'Jan': 1,
@@ -20,32 +30,36 @@ def getdate():
         'Dec': 12
     }
     month = datetime.datetime.now()
-    month = month.strftime("%b")
-    date = Months[month]
-    date = date - 1
+    month = month.strftime("%b") # Returns the month in a format such as Janurary = Jan
+    date = Months[month] # Corresponding number is found in the dictonary
+    date = date - 1 # Changed to a month pervious
     if date == 2:
         enddate = "-28"
     elif date in [4, 6, 11, 9]:
         enddate = "-30"
     else:
         enddate = "-31"
-    return date,enddate
+    return date,enddate # The correct month and end date returned
 def get_db():
+    #Used to gather and return a connection to the Historical Database
     from pymongo import MongoClient
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
     db=client.HistData
     return db
+
 def logdata(value1, value2):
+    # This function acts as control system for the script. It is this function that is envoked by the Model
     from pymongo import MongoClient
     import pandas as pd
     global data
     global data
-    db = get_db()
-    data = db.primaryschools.find({},{'_id':0})
-    data = pd.DataFrame(list(data))
+    db = get_db() # Database connection is returned and stored
+    data = db.primaryschools.find({},{'_id':0}) # Databse connection used to located the given collection
+    data = pd.DataFrame(list(data)) # Using Pandas the object returned is converted to a DataFrame
     data['PC'] = data['PC'].str.lower()
     v1 =[]
     v2=[]
+    # This function then evokes several other functions in its scope
     bedroomsLastMonth(value1,'v1')
     bedroomsLastMonth(value2,'v2')
     averagePerRoom(value1,'v1')
@@ -63,9 +77,10 @@ def logdata(value1, value2):
     plot(value1,v1[0][1],v1[0][2],v1[0][3],v1[0][4],'v1')
     plot(value2, v2[0][1], v2[0][2], v2[0][3], v2[0][4],'v2')
 
-    return v1[0][1],v2[0][1]
+    return v1[0][1],v2[0][1] # Returned to main
 
 def getdata(value1):
+    # Gathers the information regarding schools in an area.
     global data
     dataV = data[data['PC']==value1]
     NumberofSchools = dataV['Total Pupils'].count()
@@ -76,9 +91,10 @@ def getdata(value1):
     for i in religions:
         rdata = dataV[dataV['Religion']==i]
         religionsCount.append(rdata['Religion'].count())
-    return NumberofSchools,boys,girls,religions,religionsCount
+    return NumberofSchools,boys,girls,religions,religionsCount # Returns serveral paramters
 
 def plot(name,boys,girls,religions,religionsCount,v):
+    ## Plots data passed to it
     import plotly.plotly as py
     import plotly.graph_objs as go
     import plotly
@@ -109,6 +125,7 @@ def plot(name,boys,girls,religions,religionsCount,v):
     plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/2017/V2-'+v+'.html', show_link=False,auto_open=False)
 
 def bedroomsLastMonth(value1,v1):
+    ## Used to analyse and create a viusal aid of breakdown of properties availbe by bedroom type
     import pandas as pd
     from pymongo import MongoClient
     import plotly.plotly as py
@@ -144,7 +161,7 @@ def bedroomsLastMonth(value1,v1):
 
     plotly.offline.plot(fig,filename='/home/user/FlaskApp/App/static/images/2017/V3-'+v1+'.html',show_link=False,auto_open=False)
 def averagePerRoom(pc,version):
-
+    ## Analyse of the breakdown of price of property based on room  count 
     import pandas as pd
     from pymongo import MongoClient
     import plotly.plotly as py

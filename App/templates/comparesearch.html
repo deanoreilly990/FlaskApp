@@ -136,6 +136,9 @@
           </fieldset>
           <input type="button" name='Search' onclick=changeAgain() value = 'Submit'/>
         </form>
+        {%if error %}
+          <span class="label label-danger">Error:{{ error }}</span>
+        {%endif%}
       </div>
     </div>
 <script>
