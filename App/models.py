@@ -114,7 +114,7 @@ def generateGraphs(value1,value2):
             output = output['PC']
             output = str(output)
             v2 = output
-    except: ## Error checking 
+    except: ## Error checking
         error = 'Not found: Ensure in Dublin, Check spelling'
         return error
     v1,v2 = CompareAreas.logdata(v1,v2)
@@ -133,7 +133,7 @@ def overview(value1):
         error = 'Not found: Ensure in Dublin, Check spelling'
         return (error)
     crimes ,mortage = index.index(v1)
-    return crimes, mortage
+    return crimes, mortage,v1
 def genHome():
     crimes = home.homecontrol()
     return crimes

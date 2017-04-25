@@ -218,7 +218,7 @@ def index3(postcode):
     data = [trace]
     fig = go.Figure(data=data, layout=layout)
     plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/History/index/index3.html',show_link=False,auto_open=False)
-
+"""
 def main(AverageH):
     import pandas
     import requests
@@ -253,6 +253,17 @@ def main(AverageH):
     mins = mins / 360  #360 /12 returns 30 which is the average number of years a mortage is over
     mins = form(mins)
     return mins,AverageH,Cal,Needed
+"""
+def main(AverageH):
+    AverageH # should be the average house price
+    Cal = AverageH * 20 // 100
+    Needed = Cal
+    Cal = AverageH - Cal
+    mins = AverageH
+    mins = mins / 360
+    form = lambda x: round(x, 2)
+    mins = form(mins)
+    return mins, AverageH, Cal, Needed
 
 def function(postcode):
     import pandas

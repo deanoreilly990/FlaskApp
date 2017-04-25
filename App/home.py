@@ -6,7 +6,7 @@
 
 
 def get_hist():
-    from pymongo import MongoClient
+    from pymongo import MongoClientuser
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
     db = client.HistData
     return db
@@ -267,4 +267,4 @@ def homecontrol():
     home3()
     home4()
     crimes = home2()
-    return crimes # Returns crimes rates 
+    return crimes # Returns crimes rates

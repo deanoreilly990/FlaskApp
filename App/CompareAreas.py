@@ -161,7 +161,7 @@ def bedroomsLastMonth(value1,v1):
 
     plotly.offline.plot(fig,filename='/home/user/FlaskApp/App/static/images/2017/V3-'+v1+'.html',show_link=False,auto_open=False)
 def averagePerRoom(pc,version):
-    ## Analyse of the breakdown of price of property based on room  count 
+    ## Analyse of the breakdown of price of property based on room  count
     import pandas as pd
     from pymongo import MongoClient
     import plotly.plotly as py

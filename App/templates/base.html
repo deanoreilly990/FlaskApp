@@ -56,7 +56,7 @@ This page is then implemented or extended to each of the subpages -->
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script>
-    // This code is used to change the view depending on loading or not 
+    // This code is used to change the view depending on loading or not
     function show(id, value) {
         document.getElementById(id).style.display = value ? 'block' : 'none';
     }
@@ -89,18 +89,15 @@ This page is then implemented or extended to each of the subpages -->
             <a class="navbar-brand" href="index.html">Dublin Dash </a>
                 <ul id="menu">
                 <li>
-                  <a href="{{url_for('home')}}">Home</a></li>
+                  <a href="{{url_for('landing')}}">Home</a></li>
                     <li>
-                    <a href="{{url_for('landing')}}">Current Data</a>
-                  </li>
-                  <li>
-                    <a href="#">Historical</a>
+                    <a href="{{url_for('home')}}"> &nbspCurrent Data &nbsp</a>
                   </li>
                   <li><a href="{{url_for('comparesearch')}}">Compare Areas</a></li>
-                  <li><a href="{{url_for('story')}}">Story Board</a></li>
+                  <!--<li><a href="{{url_for('story')}}">Story Board</a></li> -->
                   <li>
                     <div id = 'search'>
-                      <form method="post" action="{{ url_for('search') }}">
+                      <form method="post" action="{{ url_for('index') }}">
                         <label for="search"></label>
                         <input type="textsearch" name='Search' placeholder="Search By Area" /><br />
                       </form>

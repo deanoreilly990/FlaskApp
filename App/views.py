@@ -43,11 +43,11 @@ def index():
     global sessionArea
     sessionArea=request.form['Search'] # gathers the information from the posted object
     sessionArea.strip()
-    crimes,mortage = models.overview(sessionArea) # Excutes the backend script
+    crimes,mortage,area = models.overview(sessionArea) # Excutes the backend script
     if 'Not found' in crimes: # Checks for errors
         return render_template('error.html',error=crimes)
     else:
-        return render_template('index1.html',crimes=crimes,mortage = mortage) # Passes data back to frontend
+        return render_template('index1.html',crimes=crimes,mortage = mortage,area = area) # Passes data back to frontend
 
 @app.route('/year')
 def year():
