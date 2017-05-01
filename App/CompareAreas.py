@@ -7,7 +7,7 @@
 
 
 def get_daft():
-    #Function used to gather and return a connection to the remote data connection
+    #Function used to gather and retuser a connection to the remote data connection
     from pymongo import MongoClient
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/rentalData')# Database has been secured to an industry standard
     #client = MongoClient('mongodb://localhost:27017//HistData)
@@ -546,4 +546,4 @@ def rentovertime(postcode,v1):
     )
     data = [trace0,trace1,trace2]
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig,filename='/home/user/FlaskApp/App/static/images/2017/V11-'+v1+'.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig,filename='/home/dor/FlaskApp/App/static/images/2017/V11-'+v1+'.html',show_link=False,auto_open=False)

@@ -62,7 +62,7 @@ def home1():
     date=getdate()
     datasale['Date Entered']=pd.to_datetime(datasale['Date Entered'])
     averageprice =[]
-    averageprice.append(455940)
+    #averageprice.append(455940)
     for i in date:
         str1 = '2017-'+str(i[0])+'-01'
         str2 = '2017-'+str(i[0])+str(i[1])
@@ -71,8 +71,16 @@ def home1():
         sumi =0
         for j in price:
             sumi= sumi + int(j.encode('ascii','ignore'))
-        sumi = sumi/len(price)
-        averageprice.append(sumi)
+        #sumi = sumi/len(price)
+        #averageprice.append(sumi)
+        try:
+            sumi = sumi/len(price)
+            averageprice.append(sumi)
+            #print sumi
+        except ZeroDivisionError:
+            print sumi
+            sumi = sumi/23
+            averageprice.append(595000)
     def getM():
         import datetime
         Months = {
