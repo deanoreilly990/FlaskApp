@@ -13,7 +13,7 @@ def get_daft():
     return db
 def index1(postcode):
     import pandas as pd
-    from pymongo import MongoClientuser
+    from pymongo import MongoClient
     postcode = 'Dublin ' + str(postcode)
     db = get_hist()
     year2010 = db.Data2010.find({},{'_id':0})
@@ -220,7 +220,7 @@ def index3(postcode):
         )
     data = [trace]
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename='/home/dor/FlaskApp/App/static/images/History/index/index3.html',show_link=False,auto_open=False)
+    plotly.offline.plot(fig, filename='/home/user/FlaskApp/App/static/images/History/index/index3.html',show_link=False,auto_open=False)
 """
 def main(AverageH):
     import pandas
