@@ -10,6 +10,8 @@ def get_daft():
     #Function used to gather and return a connection to the remote data connection
     from pymongo import MongoClient
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/rentalData')# Database has been secured to an industry standard
+    #client = MongoClient('mongodb://localhost:27017//HistData)
+    #client = MongoClient('mongodb://localhost:27017/rentalData')
     db = client.rentalData
     return db # Database connection is returned as an object
 def getdate():
@@ -39,11 +41,14 @@ def getdate():
         enddate = "-30"
     else:
         enddate = "-31"
+    date = 3
     return date,enddate # The correct month and end date returned
 def get_db():
     #Used to gather and return a connection to the Historical Database
     from pymongo import MongoClient
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
+    #client = MongoClient('mongodb://localhost:27017//HistData')
+    #client = MongoClient('mongodb://localhost:27017/rentalData')
     db=client.HistData
     return db
 
@@ -421,7 +426,7 @@ def saleovertime(postcode,v1):
     bed3av = []
     bed4av = []
     data = data[data['Postcode'] == str(postcode)]
-    Months = ['Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'Sept', 'Nov', 'Dec', 'Jan']
+    Months = ['Feb', 'March', 'Apr', 'May', 'June', 'July', 'August', 'Sept', 'Nov', 'Dec', 'Jan']
     columns = data.columns
     count = []
     for i in columns:

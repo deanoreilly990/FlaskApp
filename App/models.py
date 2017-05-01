@@ -17,6 +17,7 @@ def test_databaseHist():
     ## Function used in testing
     from pymongo import MongoClient
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
+    #client = MongoClient('mongodb://localhost:27017/HistData')
     try:
         client.server_info()
         return True
@@ -27,6 +28,7 @@ def test_databaseDaft():
     ## Used in the testing of Access to collection
     from pymongo import MongoClient
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/rentalData')
+    #client = MongoClient('mongodb://localhost:27017/rentalData')
     try:
         client.server_info()
         return True

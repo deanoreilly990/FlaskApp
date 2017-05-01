@@ -6,13 +6,16 @@
 
 
 def get_hist():
-    from pymongo import MongoClientuser
+    from pymongo import MongoClient
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
+    #client = MongoClient('mongodb://localhost:27017//HistData')
     db = client.HistData
     return db
 def get_db():
     from pymongo import MongoClient
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/rentalData')
+    #client = MongoClient('mongodb://localhost:27017/rentalData')
+
     db = client.rentalData
     return db
 def home1():

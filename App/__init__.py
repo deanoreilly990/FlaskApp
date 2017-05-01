@@ -16,7 +16,8 @@ def connect():
 # Substitute the 5 pieces of information you got when creating
 # the Mongo DB Database (underlined in red in the screenshots)
 # Obviously, do not store your password as plaintext in practice
-    connection = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
+    #connection = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
+    connection = MongoClient('mongodb://localhost:27017/HistData')
     handle = connection["HistData"]
     return handle
 handle=connect()

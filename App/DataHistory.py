@@ -7,6 +7,8 @@
 def get_hist():
     from pymongo import MongoClient
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
+    #client = MongoClient('mongodb://localhost:27017//HistData')
+    #client = MongoClient('mongodb://localhost:27017/rentalData')
     db = client.HistData
     return db
 

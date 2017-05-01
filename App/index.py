@@ -1,11 +1,14 @@
 def get_hist():
     from pymongo import MongoClient
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/HistData')
+    #client = MongoClient('mongodb://localhost:27017//HistData')
+    #client = MongoClient('mongodb://localhost:27017/rentalData')
     db = client.HistData
     return db
 def get_daft():
     from pymongo import MongoClient
     client = MongoClient('mongodb://dor:Abbie321@83.212.82.156:27017/rentalData')
+    #client = MongoClient('mongodb://localhost:27017/rentalData')
     db = client.rentalData
     return db
 def index1(postcode):
@@ -272,7 +275,7 @@ def function(postcode):
     date = (time.strftime("%d/%m/%Y"))
     date = date.split('/')
     date = int(date[1])
-    date = date -2
+    date = date -3
     months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
     date = months[date]
     db = get_daft()
